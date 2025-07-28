@@ -50,6 +50,36 @@
     - #FFFFFF - Task Background
 
 ## How do you plan to design the application state?
+- Goal is to write application state independent of UI, so it works first in the console. 
+- Initially will have methods that print to-dos and lists to the console, to be able to verify that their state is being managed correctly. These will be in their own module to start. Later on, we'll shirk these in favor of the UIcontroller module, which adds the to-dos and lists to the UI. 
+- Use a class to create todo objects. Details:
+    - It will have methods to operate and manage its own state, like:
+        - Editing name. 
+        - Editing due-date. 
+        - Editing the list it's on. 
+        - Editing description. 
+        - Changing completeness status. 
+        - (Delete will be part of the list methods, since it is really related to removing a to-do from a list.)
+    - It will have the following NVPs:
+        - Name. 
+        - Due date. 
+        - List. 
+        - description. 
+        - Complete. 
+- Class for todo list objects. Details:
+    - It has the following keys:
+        - Name. 
+        - To-do list, which is an array that will hold to-do objects added to it. 
+    - Methods:
+        - Edit list name. 
+        - Add to-do to list. 
+        - Remove to-do from list. 
+        - Get completed to-dos. 
+        - Get incompleted to-dos. 
+- Name / avatar:
+
+
+
 ## How do you plan to organize your project files? 
 ## What inputs will your program have? Will the user enter data or will you get input from somewhere else?
 ## Given your inputs, what are the steps necessary to return the desired output?
