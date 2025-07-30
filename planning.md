@@ -77,9 +77,31 @@
         - Get completed to-dos. 
         - Get incompleted to-dos. 
 - Name / avatar:
-
-
+    - IIFE factory with method to update name. 
+- All application state items are saved in local storage. 
 
 ## How do you plan to organize your project files? 
+- Index.js file where project is run from. 
+- Modules:
+    - Home page UI controller. 
+    - To-do list page UI controller. 
+    - Add/edit to-do / modal UI controller. 
+    - Add list / modal UI controller. 
+    - to-do class
+    - list class
+    - name management factory 
+    - local storage. 
+
 ## What inputs will your program have? Will the user enter data or will you get input from somewhere else?
+- An initial seeded "personal" list with a few sample to-dos. Initiated by the app on first load. 
+- To-dos, come from user input via a form. 
+- Lists, come from user input via a form. 
+- Name, comes from user input, method TBD. 
+
 ## Given your inputs, what are the steps necessary to return the desired output?
+1. Write the application state to work for the console:
+    - Create to-do class with constructor and methods listed above. 
+    - Create list class with constructor and methods listed above. 
+    - Create name management factory with methods listed above. 
+    - Create local storage module with functions needed to get and set data to localStorage.
+        - Export those functions and import them to other application state modules, and call them in every method related to modifying data to ensure data persists after page load. 
