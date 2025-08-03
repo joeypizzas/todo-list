@@ -4,6 +4,7 @@ import "./style.css";
 import { ToDo } from "./todo.js";
 import { lists } from "./list.js";
 import { List } from "./list.js";
+import { profile } from "./profile.js";
 
 const list = new List ("Personal");
 lists.addNewList(list);
