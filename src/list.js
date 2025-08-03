@@ -40,7 +40,7 @@ export class List {
 }
 
 export const lists = (function listManager() {
-    const allLists = [];
+    let allLists = [];
 
     function addNewList(newList) {
         allLists.push(newList);
@@ -50,8 +50,13 @@ export const lists = (function listManager() {
         return allLists;
     }
 
+    function setAllLists(listsFromStorage) {
+        allLists = listsFromStorage;
+    }
+
     return {
         addNewList,
-        getAllLists
+        getAllLists,
+        setAllLists
     }
 })();
