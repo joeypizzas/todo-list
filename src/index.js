@@ -5,6 +5,7 @@ import { ToDo } from "./todo.js";
 import { lists } from "./list.js";
 import { List } from "./list.js";
 import { profile } from "./profile.js";
+import { saveData, loadData } from "./storage.js";
 
 const list = new List ("Personal");
 lists.addNewList(list);
