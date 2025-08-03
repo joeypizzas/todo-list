@@ -1,6 +1,6 @@
 // To-do class
 
-class ToDo {
+export class ToDo {
     constructor(name, dueDate, description, isComplete, list) {
         this.name = name;
         this.dueDate = dueDate;
@@ -21,16 +21,15 @@ class ToDo {
         this.description = updatedDescription;
     }
 
-    editIsComplete(updatedIsComplete) {
-        this.isComplete = updatedIsComplete;
+    editIsComplete() {
+        if (this.isComplete === "No") {
+            this.isComplete = "Yes";
+        } else {
+            this.isComplete = "No";
+        }
     }
 
     editList(updatedList) {
         this.list = updatedList;
     }
-}
-
-export function printToDo(name, dueDate, description, isComplete, list) {
-    const toDo = new ToDo(name, dueDate, description, isComplete, list);
-    console.log(toDo);
 }
