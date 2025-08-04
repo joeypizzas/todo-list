@@ -1,6 +1,6 @@
 // To-do class
 
-export class ToDo {
+export class ToDo { // Instantiates new todos and has all methods to keep them up to date 
     constructor(name, dueDate, description, isComplete, list) {
         this.name = name;
         this.dueDate = dueDate;

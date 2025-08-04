@@ -1,6 +1,6 @@
 // Profile module
 
-export const profile = (function manageProfile() {
+export const profile = (function manageProfile() { // Profile is just name for now, but structure supports expanding later on
     let name;
 
     function editName(newName) {

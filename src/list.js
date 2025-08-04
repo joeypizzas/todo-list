@@ -1,6 +1,6 @@
 // List class
 
-export class List {
+export class List { // Creates object to group todos
     constructor(name) {
         this.name = name;
         this.toDos = [];
@@ -18,7 +18,7 @@ export class List {
         this.toDos.splice(this.toDos.indexOf(unwantedToDo), 1);
     }
 
-    getCompletedToDos() {
+    getCompletedToDos() { // Returns completed todos to show them in separate section in UI
         const completedToDos = [];
         for (const toDo of this.toDos) {
             if (toDo.isComplete === "Yes") {
@@ -28,7 +28,7 @@ export class List {
         return completedToDos;
     }
 
-    getIncompleteToDos() {
+    getIncompleteToDos() { // Returns incomplete todos to show them in separate section in UI
         const incompleteToDos = [];
         for (const toDo of this.toDos) {
             if (toDo.isComplete === "No") {
@@ -39,7 +39,7 @@ export class List {
     }
 }
 
-export const lists = (function listManager() {
+export const lists = (function listManager() { // Array to organize lists and make it easier to display them in UI
     let allLists = [];
 
     function addNewList(newList) {
