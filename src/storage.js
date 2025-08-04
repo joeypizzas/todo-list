@@ -3,9 +3,10 @@
 import { lists } from "./list.js";
 import { ToDo } from "./todo.js";
 import { List } from "./list.js";
+import { profile } from "./profile.js";
 
 export function saveData() {
-    const data = lists.getAllLists().map(list => ({
+    const listData = lists.getAllLists().map(list => ({
         name: list.name, 
         toDos: list.toDos.map(todo => ({
             name: todo.name,
@@ -16,13 +17,17 @@ export function saveData() {
         }))
     }));
 
-    localStorage.setItem("lists", JSON.stringify(data));
+    const profileData = {
+        name: profile.getName()
+    };
+
+    localStorage.setItem("lists", JSON.stringify(listData));
+    localStorage.setItem("profile", JSON.stringify(profileData));
 }
 
 export function loadData() {
-    const savedData = localStorage.getItem("lists");
-    const rawLists = JSON.parse(savedData);
-
+    const savedListData = localStorage.getItem("lists");
+    const rawLists = JSON.parse(savedListData);
     const rehydratedLists = rawLists.map(eachList => {
         const list = new List(eachList.name);
         eachList.toDos.forEach(eachToDo => {
@@ -31,8 +36,9 @@ export function loadData() {
         });
         return list;
     });
-
     lists.setAllLists(rehydratedLists);
-}
 
-// Add profile persistence
+    const savedProfileData = localStorage.getItem("profile");
+    const rawProfileData = JSON.parse(savedProfileData);
+    profile.editName(rawProfileData.name);
+}
