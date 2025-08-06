@@ -105,3 +105,13 @@
     - Create name management factory with methods listed above. 
     - Create local storage module with functions needed to get and set data to localStorage.
         - Export those functions and import them to other application state modules, and call them in every method related to modifying data to ensure data persists after page load. 
+2. Hardcode the UI to design how the project looks. 
+    - General page structure: 
+        - LHN and main page area (can be home page or a specific list page.)
+        - CSS grid for the overall page layout. 
+            - Three rows and two columns. Left row is much smaller and top row is much smaller. 
+            - LHN is top two rows but left column. 
+            - Main page is right column and both rows. 
+                - Top row is header section, used for both home and list pages. 
+                - second row is much bigger main content section. 
+            - Footer is bottom row and both columns, with attribution to the author. 
