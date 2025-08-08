@@ -118,3 +118,7 @@
                 - Top row is header section, used for both home and list pages. 
                 - second row is much bigger main content section. 
             - Footer is bottom row and both columns, with attribution to the author. 
+    - Header:
+        - Large title "To-dos" with nice SVG next to it 
+        - New button right adjusted, also with SVG, aligned on same line. 
+        - Flex-box, justify-content space between, align items center
