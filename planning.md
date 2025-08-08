@@ -41,13 +41,16 @@
     - All fields are shown for the to-do and it can be edited. This will be the same edit center state modal shown on the home page, but rendered as a right hand card. 
     - Top un-completed to-do is opened by default in right hand card when you load the list, and one is always open. 
 - Clean UI with a nice color scheme. Focus on clean and modern. Some ideas:
-    - #F7F9FC - Background  
-    - #1A1A1A - Primary Text  
-    - #6B7280 - Secondary Text  
-    - #3B82F6 - Accent / Button  
-    - #10B981 - Success  
-    - #E5E7EB - Borders  
-    - #FFFFFF - Task Background
+    - Header background – #3B82F6 (modern blue)
+    - Header text – #FFFFFF (white)
+    - Navigation background – #F3F4F6 (light neutral gray)
+    - Main body background – #F9FAFB (very light gray)
+    - Primary text – #111827 (near-black)
+    - Secondary text – #6B7280 (muted gray)
+    - Primary button background – #3B82F6 (same as header)
+    - Primary button hover – #2563EB (slightly darker blue)
+    - Success / accent color – #10B981 (fresh green)
+    - Borders / dividers – #E5E7EB (soft light gray)
 
 ## How do you plan to design the application state?
 - Goal is to write application state independent of UI, so it works first in the console. 
