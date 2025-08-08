@@ -22,20 +22,38 @@ html, body {
 
 #lhn {
     grid-area: lhn;
-    background-color: blue;
+    background-color: #F3F4F6;
 }
 
 .header {
     grid-area: header;
-    background-color: green;
+    background-color: #3B82F6;
 }
 
 .main {
     grid-area: main;
-    background-color: red;
+    background-color: #F9FAFB;
 }
 
 #footer {
     grid-area: footer;
-    background-color: yellow;
+    background-color: #F9FAFB;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem 0rem 1rem 0rem;
+}
+
+#footer-content {
+    font-size: 1rem;
+    color: #111827;
+}
+
+a {
+    text-decoration: none;
+    color: #111827;
+}
+
+a:hover {
+    color: #3B82F6;
 }
