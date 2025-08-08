@@ -28,6 +28,22 @@ html, body {
 .header {
     grid-area: header;
     background-color: #3B82F6;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem 1rem 2rem;
+}
+
+.title-container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    gap: 1rem;
+}
+
+.title {
+    font-size: 3.5rem;
+    color: #FFFFFF;
 }
 
 .main {
