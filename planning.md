@@ -130,3 +130,10 @@
         - Home row a bit farther down 
         - Lists row a bit below that
             - Lists row has indented sub-section that includes several lists. 
+    - Home main area:
+        - Home title in top left. 
+        - Css grid of cards below that, each one for a different list, including the to-dos for that list. Each card:
+            - Title, which is a button offering option to go to that specific list. 
+            - Indented list of Todos, just showing name and due date for each. 
+            - Tapping a to-do opens the center-state to-do edit modal. 
+            - main section is scrollable on its own, separate from the rest of the page, which is fixed.
