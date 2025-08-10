@@ -1,5 +1,14 @@
 /* Style for todo list */
 
+:root {
+    --lhn: #F3F4F6;
+    --header: #3B82F6;
+    --main-text: #111827;
+    --header-text: #FFFFFF;
+    --main-background: #F9FAFB;
+
+}
+
 html, body {
     margin: 0;
     padding: 0;
@@ -22,7 +31,7 @@ html, body {
 
 #lhn {
     grid-area: lhn;
-    background-color: #F3F4F6;
+    background-color: var(--lhn);
     display: flex;
     flex-direction: column;
     gap: 2rem;
@@ -43,14 +52,14 @@ html, body {
 
 #profile-name {
     font-size: 1.75rem;
-    color: #111827;
+    color: var(--main-text);
 }
 
 #button-profile-edit {
     all: unset;
     display: inline-block;
     cursor: pointer;
-    background-color: #F3F4F6;
+    background-color: var(--lhn);
     display: flex;
     align-items: center;
 }
@@ -62,9 +71,9 @@ html, body {
 }
 
 .item-lhn {
-    color: #111827;
+    color: var(--main-text);
     border: none;
-    background-color: #F3F4F6;
+    background-color: var(--lhn);
     align-self: start;
     display: flex;
     align-items: center;
@@ -94,7 +103,7 @@ html, body {
 
 .header {
     grid-area: header;
-    background-color: #3B82F6;
+    background-color: var(--header);
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -110,22 +119,22 @@ html, body {
 
 .title {
     font-size: 3.5rem;
-    color: #FFFFFF;
+    color: var(--header-text);
 }
 
 .new-button {
     padding: .5rem 1rem .5rem 1rem;
     border-radius: 8px;
     border: none;
-    background-color: #FFFFFF;
-    color: #3B82F6;
-    border: 2px solid #FFFFFF;
+    background-color: var(--header-text);
+    color: var(--header);
+    border: 2px solid var(--header-text);
     cursor: pointer;
 }
 
 .new-button:hover {
-    background-color: #3B82F6;
-    color: #FFFFFF;
+    background-color: var(--header);
+    color: var(--header-text);
 }
 
 #home-new-button {
@@ -137,12 +146,12 @@ html, body {
 
 .main {
     grid-area: main;
-    background-color: #F9FAFB;
+    background-color: var(--main-background);
 }
 
 #footer {
     grid-area: footer;
-    background-color: #F9FAFB;
+    background-color: var(--main-background);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -151,14 +160,14 @@ html, body {
 
 #footer-content {
     font-size: 1rem;
-    color: #111827;
+    color: var(--main-text);
 }
 
 a {
     text-decoration: none;
-    color: #111827;
+    color: var(--main-text);
 }
 
 a:hover {
-    color: #3B82F6;
+    color: var(--header);
 }
