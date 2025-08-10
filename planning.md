@@ -122,3 +122,11 @@
         - Large title "To-dos" with nice SVG next to it 
         - New button right adjusted, also with SVG, aligned on same line. 
         - Flex-box, justify-content space between, align items center
+    - LHN: 
+        - Profile area: 
+            - Profile image rendered as a circle
+            - Name 
+            - Edit SVG which is a button. 
+        - Home row a bit farther down 
+        - Lists row a bit below that
+            - Lists row has indented sub-section that includes several lists. 
