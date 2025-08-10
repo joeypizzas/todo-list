@@ -46,6 +46,27 @@ html, body {
     color: #FFFFFF;
 }
 
+.new-button {
+    padding: .5rem 1rem .5rem 1rem;
+    border-radius: 8px;
+    border: none;
+    background-color: #FFFFFF;
+    color: #3B82F6;
+    border: 2px solid #FFFFFF;
+}
+
+.new-button:hover {
+    background-color: #3B82F6;
+    color: #FFFFFF;
+}
+
+#home-new-button {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: .5rem;
+}
+
 .main {
     grid-area: main;
     background-color: #F9FAFB;
