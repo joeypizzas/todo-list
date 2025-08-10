@@ -11,8 +11,8 @@
             <div id="profile-lhn">
                 <img src="./images/pizza-slice.jpg" alt="A delicious slice of pizza" id="profile-image">
                 <div id="profile-name">Joe</div>
-                <button id="button-profile-edit">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#111827" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" id="pencil-svg"><path d="M21.174 6.812a1 1 0 0 0-3.986-3.987L3.842 16.174a2 2 0 0 0-.5.83l-1.321 4.352a.5.5 0 0 0 .623.622l4.353-1.32a2 2 0 0 0 .83-.497z"/><path d="m15 5 4 4"/></svg>
+                <button id="button-profile-edit" class="button-edit">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#111827" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="pencil-svg"><path d="M21.174 6.812a1 1 0 0 0-3.986-3.987L3.842 16.174a2 2 0 0 0-.5.83l-1.321 4.352a.5.5 0 0 0 .623.622l4.353-1.32a2 2 0 0 0 .83-.497z"/><path d="m15 5 4 4"/></svg>
                 </button>
             </div>
             <div id="body-lhn">
@@ -53,9 +53,16 @@
                             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#111827" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="arrow-svg"><path d="M18 8L22 12L18 16"/><path d="M2 12H22"/></svg>
                         </button>
                         <div class="home-todo">
-                            <button class="todo-check"></button>
-                            <div class="todo-name">Work on coding course</div>
-                            <div class="todo-due">Due: 2025-08-10</div>
+                            <div class="home-todo-check-name">
+                                <button class="home-todo-check"></button>
+                                <div class="todo-name">Work on coding course</div>
+                            </div>
+                            <div class="home-todo-due-edit">
+                                <div class="todo-due">Due: 08/10/2025</div>
+                                <button class="button-edit" id="button-todo-edit">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#111827" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="pencil-svg"><path d="M21.174 6.812a1 1 0 0 0-3.986-3.987L3.842 16.174a2 2 0 0 0-.5.83l-1.321 4.352a.5.5 0 0 0 .623.622l4.353-1.32a2 2 0 0 0 .83-.497z"/><path d="m15 5 4 4"/></svg>
+                                </button>
+                            </div>
                         </div>
                         <div class="home-todo"></div>
                         <div class="home-todo"></div>
@@ -66,9 +73,16 @@
                             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#111827" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="arrow-svg"><path d="M18 8L22 12L18 16"/><path d="M2 12H22"/></svg>
                         </button>
                         <div class="home-todo">
-                            <button class="todo-check"></button>
-                            <div class="todo-name">Go to the office</div>
-                            <div class="todo-due">Due: 2025-08-12</div>
+                            <div class="home-todo-check-name">
+                                <button class="home-todo-check"></button>
+                                <div class="todo-name">Go to the office</div>
+                            </div>
+                            <div class="home-todo-due-edit">
+                                <div class="todo-due">Due: 08/12/2025</div>
+                                <button class="button-edit" id="button-todo-edit">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#111827" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="pencil-svg"><path d="M21.174 6.812a1 1 0 0 0-3.986-3.987L3.842 16.174a2 2 0 0 0-.5.83l-1.321 4.352a.5.5 0 0 0 .623.622l4.353-1.32a2 2 0 0 0 .83-.497z"/><path d="m15 5 4 4"/></svg>
+                                </button>
+                            </div>
                         </div>
                         <div class="home-todo"></div>
                         <div class="home-todo"></div>
@@ -79,9 +93,16 @@
                             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#111827" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="arrow-svg"><path d="M18 8L22 12L18 16"/><path d="M2 12H22"/></svg>
                         </button>
                         <div class="home-todo">
-                            <button class="todo-check"></button>
-                            <div class="todo-name">Run 1,500 miles for the year</div>
-                            <div class="todo-due">Due: 2025-12-31</div>
+                            <div class="home-todo-check-name">
+                                <button class="home-todo-check"></button>
+                                <div class="todo-name">Run 1,500 miles for the year</div>
+                            </div>
+                            <div class="home-todo-due-edit">
+                                <div class="todo-due">Due: 12/31/2025</div>
+                                <button class="button-edit" id="button-todo-edit">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#111827" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="pencil-svg"><path d="M21.174 6.812a1 1 0 0 0-3.986-3.987L3.842 16.174a2 2 0 0 0-.5.83l-1.321 4.352a.5.5 0 0 0 .623.622l4.353-1.32a2 2 0 0 0 .83-.497z"/><path d="m15 5 4 4"/></svg>
+                                </button>
+                            </div>
                         </div>
                         <div class="home-todo"></div>
                         <div class="home-todo"></div>

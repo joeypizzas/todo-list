@@ -55,13 +55,16 @@ html, body {
     color: var(--main-text);
 }
 
-#button-profile-edit {
+.button-edit {
     all: unset;
     display: inline-block;
     cursor: pointer;
-    background-color: var(--lhn);
     display: flex;
     align-items: center;
+}
+
+#button-profile-edit, #button-todo-edit {
+    background-color: var(--lhn);
 }
 
 #body-lhn {
@@ -194,8 +197,31 @@ html, body {
 
 .home-todo {
     display: flex;
+    justify-content: space-between;
     gap: .5rem;
     color: var(--main-text);
+    border-bottom: 2px solid var(--header);
+    padding: .5rem;
+}
+
+.home-todo-check-name {
+    display: flex;
+    gap: .75rem;
+    align-items: center;
+}
+
+.home-todo-check {
+    background-color: var(--main-background);
+    border: 2px solid var(--header);
+    padding: .6rem;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+.home-todo-due-edit {
+    display: flex;
+    gap: .75rem;
+    align-items: center;
 }
 
 #footer {
