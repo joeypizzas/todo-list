@@ -200,7 +200,7 @@ html, body {
     justify-content: space-between;
     gap: .5rem;
     color: var(--main-text);
-    border-bottom: 2px solid var(--header);
+    border-top: 2px solid var(--header);
     padding: .5rem;
 }
 
@@ -210,12 +210,35 @@ html, body {
     align-items: center;
 }
 
-.home-todo-check {
+.home-todo-checkbox {
     background-color: var(--main-background);
     border: 2px solid var(--header);
-    padding: .6rem;
+    padding: .2rem;
     cursor: pointer;
     border-radius: 4px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.home-todo-checkbox.checked .check-svg {
+    visibility: visible;
+}
+
+.home-todo-checkbox.checked {
+    background-color: var(--header);
+}
+
+s {
+    text-decoration-color: var(--main-text);
+}
+
+.check-svg {
+    width: 16px;
+    height: 16px;
+    flex-shrink: 0;
+    visibility: hidden;
+    stroke: var(--header-text);
 }
 
 .home-todo-due-edit {
