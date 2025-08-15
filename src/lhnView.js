@@ -1,4 +1,4 @@
-// JS for LHN 
+// JS for LHN DOM
 
 export function initLHNListeners() {
     const root = document.documentElement;
