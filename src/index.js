@@ -6,6 +6,7 @@ import { lists } from "./list.js";
 import { List } from "./list.js";
 import { profile } from "./profile.js";
 import { saveData, loadData } from "./storage.js";
+import { initLHNListeners } from "./lhnView.js";
 
 const list = new List ("Personal");
 lists.addNewList(list);
@@ -21,3 +22,5 @@ const toDo3 = new ToDo("Workout", "2025-08-03", "I'm going to do a chest and tri
 list.addToDo(toDo1);
 list.addToDo(toDo2);
 list.addToDo(toDo3);
+
+initLHNListeners();
