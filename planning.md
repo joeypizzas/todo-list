@@ -137,3 +137,12 @@
             - Indented list of Todos, just showing name and due date for each. 
             - Tapping a to-do opens the center-state to-do edit modal. 
             - main section is scrollable on its own, separate from the rest of the page, which is fixed.
+    - To come back later for profile modal, new modal, and lists page. 
+- Add dymanic behavior via javascript. 
+    - LHN:
+        - Hover event listeners on home button and lists pages. 
+            - Show cursor over them and highlight color. 
+            - Once pages are built, load page on clickup. 
+    - Profile:
+        - Hover event listener on edit button. 
+        - Once edit modal is built, load page on clickup. 
