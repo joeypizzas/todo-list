@@ -2,6 +2,8 @@
 
 :root {
     --lhn: #F3F4F6;
+    --lhn-hover: #E5E7EB;
+    --lhn-click: #D1D5DB;
     --header: #3B82F6;
     --main-text: #111827;
     --header-text: #FFFFFF;
@@ -81,6 +83,7 @@ html, body {
     display: flex;
     align-items: center;
     gap: .5rem;
+    width: 100%;
 }
 
 .item-lhn-parent {
@@ -150,6 +153,7 @@ html, body {
 #main {
     grid-area: main;
     background-color: var(--main-background);
+    overflow-y: auto;
 }
 
 #main-home {
