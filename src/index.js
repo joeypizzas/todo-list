@@ -8,6 +8,7 @@ import { profile } from "./profile.js";
 import { saveData, loadData } from "./storage.js";
 import { initLHNListeners } from "./lhnView.js";
 import { initProfileListeners } from "./profileView.js";
+import { initHeaderListeners } from "./headerView.js";
 
 const list = new List ("Personal");
 lists.addNewList(list);
@@ -26,3 +27,4 @@ list.addToDo(toDo3);
 
 initLHNListeners();
 initProfileListeners();
+initHeaderListeners();
