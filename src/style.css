@@ -148,11 +148,6 @@ html, body {
     cursor: pointer;
 }
 
-.new-button:hover {
-    background-color: var(--header);
-    color: var(--header-text);
-}
-
 #home-new-button {
     display: flex;
     justify-content: space-between;
