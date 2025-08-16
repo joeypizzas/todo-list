@@ -65,8 +65,17 @@ html, body {
     align-items: center;
 }
 
-#button-profile-edit, #button-todo-edit {
+#button-profile-edit {
     background-color: var(--lhn);
+    font-size: 1.75rem;
+    display: flex;
+    gap: .5rem;
+    border-radius: 5px;
+    padding: 0 .5rem 0 .5rem;
+}
+
+#button-profile-edit, #button-todo-edit {
+    color: var(--main-text);
 }
 
 #body-lhn {
