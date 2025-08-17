@@ -42,9 +42,6 @@ fitness.addToDo(fitness1);
 fitness.addToDo(fitness2);
 fitness.addToDo(fitness3);
 
-console.log(fitness);
-
-
 initLHNListeners();
 initProfileListeners();
 initHeaderListeners();
