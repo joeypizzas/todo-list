@@ -69,4 +69,73 @@ export function addHomePage() {
     }
 
     main.appendChild(mainHome);
+
+    const root = document.documentElement;
+
+    const toDoCheckboxes = document.querySelectorAll(".home-todo-checkbox");
+    toDoCheckboxes.forEach(checkbox => {
+        checkbox.addEventListener("mouseover", () => {
+            if (!checkbox.classList.contains("checked")) {
+                checkbox.style.backgroundColor = getComputedStyle(root).getPropertyValue("--lhn-hover");
+            } else {
+                checkbox.style.backgroundColor = getComputedStyle(root).getPropertyValue("--header-hover");
+                checkbox.style.borderColor = getComputedStyle(root).getPropertyValue("--header-hover");
+            }
+        });
+        checkbox.addEventListener("mouseout", () => {
+            if (!checkbox.classList.contains("checked")) {
+                checkbox.style.backgroundColor = getComputedStyle(root).getPropertyValue("--main-background");
+            } else {
+                checkbox.style.backgroundColor = getComputedStyle(root).getPropertyValue("--header");
+                checkbox.style.borderColor = getComputedStyle(root).getPropertyValue("--header");
+            }
+
+        });
+        checkbox.addEventListener("mousedown", () => {
+            if (!checkbox.classList.contains("checked")) {
+                checkbox.style.backgroundColor = getComputedStyle(root).getPropertyValue("--lhn-click");
+            } else {
+                checkbox.style.backgroundColor = getComputedStyle(root).getPropertyValue("--header-click");
+                checkbox.style.borderColor = getComputedStyle(root).getPropertyValue("--header-click");
+            }
+        });
+        checkbox.addEventListener("mouseup", () => {
+            if (!checkbox.classList.contains("checked")) {
+                checkbox.classList.add("checked");
+                checkbox.style.backgroundColor = getComputedStyle(root).getPropertyValue("--header-hover");
+                checkbox.style.borderColor = getComputedStyle(root).getPropertyValue("--header-hover");
+
+                const homeToDo = checkbox.closest(".home-todo");
+
+                const toDoName = homeToDo.querySelector(".todo-name");
+                const struckName = document.createElement("s");
+                struckName.classList.add("struck-name")
+                struckName.textContent = toDoName.textContent;
+                toDoName.textContent = "";
+                toDoName.appendChild(struckName);
+
+                const toDoDue = homeToDo.querySelector(".todo-due");
+                const struckDue = document.createElement("s");
+                struckDue.classList.add("struck-due");
+                struckDue.textContent = toDoDue.textContent;
+                toDoDue.textContent = "";
+                toDoDue.appendChild(struckDue);
+
+            } else {
+                checkbox.classList.remove("checked");
+                checkbox.style.backgroundColor = getComputedStyle(root).getPropertyValue("--lhn-hover");
+                checkbox.style.borderColor = getComputedStyle(root).getPropertyValue("--header");
+
+                const homeToDo = checkbox.closest(".home-todo");
+
+                const toDoName = homeToDo.querySelector(".todo-name");
+                const struckName = homeToDo.querySelector(".struck-name");
+                toDoName.textContent = struckName.textContent;
+
+                const toDoDue = homeToDo.querySelector(".todo-due");
+                const struckDue = homeToDo.querySelector(".struck-due");
+                toDoDue.textContent = struckDue.textContent;
+            }
+        }); 
+    });
 }
