@@ -72,10 +72,47 @@ export const svg = (function svgUtils() {
         return pencilSVG;
     }
 
+    function createTrashSVG() {
+        const trashSVG = document.createElementNS(svgNS, "svg");
+        trashSVG.setAttribute("width", "16");
+        trashSVG.setAttribute("height", "16");
+        trashSVG.setAttribute("viewBox", "0 0 24 24");
+        trashSVG.setAttribute("fill", "none");
+        trashSVG.setAttribute("stroke", "currentColor");
+        trashSVG.setAttribute("stroke-width", "2");
+        trashSVG.setAttribute("stroke-linecap", "round");
+        trashSVG.setAttribute("stroke-linejoin", "round");
+        trashSVG.classList.add("trash-svg");
+      
+        const path1 = document.createElementNS(svgNS, "path");
+        path1.setAttribute("d", "M10 11v6");
+      
+        const path2 = document.createElementNS(svgNS, "path");
+        path2.setAttribute("d", "M14 11v6");
+      
+        const path3 = document.createElementNS(svgNS, "path");
+        path3.setAttribute("d", "M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6");
+      
+        const path4 = document.createElementNS(svgNS, "path");
+        path4.setAttribute("d", "M3 6h18");
+      
+        const path5 = document.createElementNS(svgNS, "path");
+        path5.setAttribute("d", "M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2");
+      
+        trashSVG.appendChild(path1);
+        trashSVG.appendChild(path2);
+        trashSVG.appendChild(path3);
+        trashSVG.appendChild(path4);
+        trashSVG.appendChild(path5);
+      
+        return trashSVG;
+      }
+
     return {
         createArrowSVG,
         createCheckSVG,
-        createPencilSVG
+        createPencilSVG,
+        createTrashSVG
     }
 })()
 
