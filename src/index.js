@@ -9,6 +9,7 @@ import { saveData, loadData } from "./storage.js";
 import { initLHNListeners } from "./lhnView.js";
 import { initProfileListeners } from "./profileView.js";
 import { initHeaderListeners } from "./headerView.js";
+import { addHomePage } from "./homeView.js";
 
 const personal = new List ("Personal");
 lists.addNewList(personal);
@@ -47,3 +48,4 @@ console.log(fitness);
 initLHNListeners();
 initProfileListeners();
 initHeaderListeners();
+addHomePage();
