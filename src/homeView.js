@@ -61,7 +61,7 @@ export function addHomePage() {
             homeToDoDueEdit.appendChild(todoDue);
 
             const buttonToDoEdit = document.createElement("button");
-            buttonToDoEdit.id = "button-todo-edit";
+            buttonToDoEdit.classList.add("button-todo-edit");
             buttonToDoEdit.classList.add("button-edit");
             homeToDoDueEdit.appendChild(buttonToDoEdit);
 
@@ -122,6 +122,11 @@ export function addHomePage() {
                 toDoDue.textContent = "";
                 toDoDue.appendChild(struckDue);
 
+                const buttonToDoEdit = homeToDo.querySelector(".button-todo-edit");
+                const pencilSVG = homeToDo.querySelector(".pencil-svg");
+                buttonToDoEdit.removeChild(pencilSVG);
+                buttonToDoEdit.appendChild(svg.createTrashSVG());
+
                 for (const list of lists.getAllLists()) {
                     for (const todo of list.toDos) {
                         if (todo.name === struckName.textContent) {
@@ -144,6 +149,11 @@ export function addHomePage() {
                 const toDoDue = homeToDo.querySelector(".todo-due");
                 const struckDue = homeToDo.querySelector(".struck-due");
                 toDoDue.textContent = struckDue.textContent;
+
+                const buttonToDoEdit = homeToDo.querySelector(".button-todo-edit");
+                const trashSVG = homeToDo.querySelector(".trash-svg");
+                buttonToDoEdit.removeChild(trashSVG);
+                buttonToDoEdit.appendChild(svg.createPencilSVG());
 
                 for (const list of lists.getAllLists()) {
                     for (const todo of list.toDos) {
