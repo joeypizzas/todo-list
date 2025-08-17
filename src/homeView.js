@@ -2,6 +2,7 @@
 
 import { lists } from "./list.js";
 import { svg } from "./svgUtils.js";
+import { ToDo } from "./todo.js";
 
 export function addHomePage() {
     const main = document.querySelector("#main");
@@ -121,6 +122,14 @@ export function addHomePage() {
                 toDoDue.textContent = "";
                 toDoDue.appendChild(struckDue);
 
+                for (const list of lists.getAllLists()) {
+                    for (const todo of list.toDos) {
+                        if (todo.name === struckName.textContent) {
+                            todo.editIsComplete();
+                        }
+                    }
+                }
+
             } else {
                 checkbox.classList.remove("checked");
                 checkbox.style.backgroundColor = getComputedStyle(root).getPropertyValue("--lhn-hover");
@@ -135,6 +144,14 @@ export function addHomePage() {
                 const toDoDue = homeToDo.querySelector(".todo-due");
                 const struckDue = homeToDo.querySelector(".struck-due");
                 toDoDue.textContent = struckDue.textContent;
+
+                for (const list of lists.getAllLists()) {
+                    for (const todo of list.toDos) {
+                        if (todo.name === toDoName.textContent) {
+                            todo.editIsComplete();
+                        }
+                    }
+                }
             }
         }); 
     });
