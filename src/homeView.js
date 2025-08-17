@@ -48,8 +48,6 @@ export function addHomePage() {
 
             const toDoName = document.createElement("div");
             toDoName.classList.add("todo-name");
-            toDoName.textContent = todo.name;
-            homeToDoCheckName.appendChild(toDoName);
 
             const homeToDoDueEdit = document.createElement("div");
             homeToDoDueEdit.classList.add("home-todo-due-edit");
@@ -57,15 +55,39 @@ export function addHomePage() {
 
             const todoDue = document.createElement("div");
             todoDue.classList.add("todo-due");
-            todoDue.textContent = `Due: ${todo.dueDate}`;
-            homeToDoDueEdit.appendChild(todoDue);
 
             const buttonToDoEdit = document.createElement("button");
             buttonToDoEdit.classList.add("button-todo-edit");
             buttonToDoEdit.classList.add("button-edit");
-            homeToDoDueEdit.appendChild(buttonToDoEdit);
 
-            buttonToDoEdit.appendChild(svg.createPencilSVG());
+            if (todo.isComplete === "No") {
+                toDoName.textContent = todo.name;
+                homeToDoCheckName.appendChild(toDoName);
+
+                todoDue.textContent = `Due: ${todo.dueDate}`;
+                homeToDoDueEdit.appendChild(todoDue);
+
+                buttonToDoEdit.appendChild(svg.createPencilSVG());
+
+            } else {
+                homeToDoCheckbox.classList.add("checked");
+                
+                const struckName = document.createElement("s");
+                struckName.classList.add("struck-name");
+                struckName.textContent = todo.name;
+                toDoName.appendChild(struckName);
+                homeToDoCheckName.appendChild(toDoName);
+
+                const struckDue = document.createElement("s");
+                struckDue.classList.add("struck-due");
+                struckDue.textContent = `Due: ${todo.dueDate}`;
+                todoDue.appendChild(struckDue);
+                homeToDoDueEdit.appendChild(todoDue);
+
+                buttonToDoEdit.appendChild(svg.createTrashSVG());
+            }
+
+            homeToDoDueEdit.appendChild(buttonToDoEdit);
         }
     }
 
