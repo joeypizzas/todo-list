@@ -146,3 +146,11 @@
     - Profile:
         - Hover event listener on edit button. 
         - Once edit modal is built, load page on clickup. 
+    - Home: 
+        - Function to add lists and todos to home page via DOM. 
+        - Show completed vs not todos on page load. 
+        - Event listeners on checkbox to mark as complete in UI and application state.
+        - Edit modal when clicking pencil for todo that enables editing todo. 
+        - New modal that enables adding new list and new todo. 
+        - Delete button that enables removing todo that's completed. 
+        - Delete button on list that enables removing list when it has no todos. 
