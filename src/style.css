@@ -258,6 +258,51 @@ s {
     align-items: center;
 }
 
+#edit-todo-dialog {
+    all: unset;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: var(--main-background);
+    padding: 2rem;
+    border-radius: 8px;
+    border: 2px solid var(--header);
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+    width: 400px;
+    height: 400px;
+}
+
+#close-modal-button {
+    all: unset;
+    cursor: pointer;
+    color: var(--main-text);
+    align-self: end;
+    font-weight: 700;
+    font-size: 1.25rem;
+}
+
+#close-modal-button:hover {
+    color: var(--header-hover);
+}
+
+#edit-todo-title {
+    font-size: 2rem;
+    color: var(--main-text);
+}
+
+#edit-todo-form {
+    display: flex;
+    flex-direction: column;
+    gap: .25rem;
+}
+
+.blur {
+    filter: blur(10px);
+}
+
 #footer {
     grid-area: footer;
     background-color: var(--main-background);
