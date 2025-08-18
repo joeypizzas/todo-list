@@ -3,6 +3,7 @@
 import { lists } from "./list.js";
 import { svg } from "./svgUtils.js";
 import { ToDo } from "./todo.js";
+import { saveData } from "./storage.js";
 
 export function addHomePage() {
     const main = document.querySelector("#main");
@@ -185,6 +186,7 @@ export function addHomePage() {
                     }
                 }
             }
+            saveData();
         }); 
     });
 }
