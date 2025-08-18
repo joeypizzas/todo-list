@@ -150,7 +150,19 @@
         - Function to add lists and todos to home page via DOM. 
         - Show completed vs not todos on page load. 
         - Event listeners on checkbox to mark as complete in UI and application state.
-        - Edit modal when clicking pencil for todo that enables editing todo. 
         - New modal that enables adding new list and new todo. 
         - Delete button that enables removing todo that's completed. 
         - Delete button on list that enables removing list when it has no todos. 
+    - Edit to-do modal:
+        - New module for this, since it will be used on both the home and list specific pages. 
+        - Opened via edit pencil button on both home and list pages. 
+        - Tapping button adds blur class to all main sections on the page besides modal. 
+        - Modal UI has:
+            - Top right: X that closes it. 
+            - A header that says Edit to-do. 
+            - Rows for each of the sections of the the to-do, with form fields to edit prior input. 
+            - Submit button at the bottom. 
+            - Delete button on the modal. 
+            - Tapping outside of modal also closes it. 
+        - If you submit, check whether the input from the form matches what's saved for the to-do now, and if not, call approrpriate method to update and then update storage for any changes. 
+        - Show updated to-do changes in UI after submitting. 
