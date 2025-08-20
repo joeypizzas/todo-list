@@ -270,9 +270,14 @@ s {
     border: 2px solid var(--header);
     display: flex;
     flex-direction: column;
-    gap: .5rem;
     width: 400px;
     height: 400px;
+    justify-content: space-between;
+}
+
+#edit-title-and-close-button {
+    display: flex;
+    flex-direction: column;
 }
 
 #close-modal-button {
@@ -280,7 +285,7 @@ s {
     cursor: pointer;
     color: var(--main-text);
     align-self: end;
-    font-weight: 700;
+    font-weight: 600;
     font-size: 1.25rem;
 }
 
@@ -290,13 +295,47 @@ s {
 
 #edit-todo-title {
     font-size: 2rem;
+    font-weight: 600;
     color: var(--main-text);
 }
 
 #edit-todo-form {
     display: flex;
     flex-direction: column;
+    gap: .75rem;
+}
+
+.todo-label-and-field {
+    display: flex;
+    flex-direction: column;
     gap: .25rem;
+}
+
+.todo-label {
+    color: var(--main-text);
+    font-size: .9rem;
+    font-weight: 600;
+}
+
+.edit-todo-field {
+    border: 2px solid var(--header);
+    border-radius: 5px;
+    min-height: 1.25rem;
+    font-size: 1rem;
+    padding: .25rem;
+    color: var(--main-text);
+}
+
+#edit-todo-save {
+    padding: .5rem 1rem .5rem 1rem;
+    border-radius: 8px;
+    border: none;
+    background-color: var(--header);
+    color: var(--header-text);
+    border: 2px solid var(--header-text);
+    cursor: pointer;
+    width: 25%;
+    align-self: center;
 }
 
 .blur {

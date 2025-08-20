@@ -45,16 +45,29 @@
                    
         </div>
         <dialog id="edit-todo-dialog" open>
-            <button id="close-modal-button">X</button>
-            <div id="edit-todo-title">Edit to-do</div>
-            <form id="edit-todo-form">
-                <input class="edit-todo-field" id="todo-name">
-                <input class="edit-todo-field" id="todo-description">
-                <input class="edit-todo-field" id="todo-due">
-                <select id="todo-complete"></select>
-                <input class="edit-todo-field" id="to-do-list">
-                <button>Save</button>
+            <div id="edit-title-and-close-button">
+                <button id="close-modal-button">X</button>
+                <div id="edit-todo-title">Edit to-do</div>
+            </div>
+            <form id="edit-todo-form" action="/submit" method="POST">
+                <div class="todo-label-and-field">
+                    <div class="todo-label" id="todo-label-name">Name</div>
+                    <input class="edit-todo-field" id="todo-name" type="text" name="name" maxlength="50" pattern="[A-Za-z0-9 ,.'\-:!?]+" required>
+                </div>
+                <div class="todo-label-and-field">
+                    <div class="todo-label" id="todo-label-description">Description</div>
+                    <input class="edit-todo-field" id="todo-description" type="text" name="description" maxlength="100" pattern="[A-Za-z0-9 ,.'\-:!?]+" required>
+                </div>
+                <div class="todo-label-and-field">
+                    <div class="todo-label" id="todo-label-due">Due date</div>
+                    <input class="edit-todo-field" id="todo-due" type="date" name="due-date" required>
+                </div>
+                <div class="todo-label-and-field">
+                    <div class="todo-label" id="todo-label-list">List</div>
+                    <select class="edit-todo-field" id="todo-list" name="list" required></select>
+                </div>
             </form>
+            <button id="edit-todo-save">Save</button>
         </dialog>
         <div id="footer" class="blur">
             <div id="footer-content">Created by <a href="https://github.com/joeypizzas" target="_blank" rel="noopener noreferrer"> joeypizzas</a</div>
