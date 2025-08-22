@@ -258,7 +258,7 @@ s {
     align-items: center;
 }
 
-#edit-todo-dialog {
+#edit-todo-dialog[open] {
     all: unset;
     position: fixed;
     top: 50%;
