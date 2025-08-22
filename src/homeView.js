@@ -4,6 +4,7 @@ import { lists } from "./list.js";
 import { svg } from "./svgUtils.js";
 import { ToDo } from "./todo.js";
 import { saveData } from "./storage.js";
+import { showEditToDoDialog, hideEditToDoDialog } from "./editToDoDialog.js";
 
 export function addHomePage() {
     const main = document.querySelector("#main");
@@ -189,4 +190,31 @@ export function addHomePage() {
             saveData();
         }); 
     });
+
+    const toDoEditButtons = document.querySelectorAll(".button-todo-edit");
+    toDoEditButtons.forEach(editButton => {
+        editButton.addEventListener("mouseover", () => {
+            const pencilSVG = editButton.querySelector(".pencil-svg");
+            if (pencilSVG) {
+                pencilSVG.style.stroke = getComputedStyle(root).getPropertyValue("--header-hover");
+            }
+            
+            const trashSVG = editButton.querySelector(".trash-svg");
+            if (trashSVG) {
+                trashSVG.style.stroke = getComputedStyle(root).getPropertyValue("--header-hover");
+            }
+        });
+        editButton.addEventListener("mouseout", () => {
+            const pencilSVG = editButton.querySelector(".pencil-svg");
+            if (pencilSVG) {
+                pencilSVG.style.stroke = getComputedStyle(root).getPropertyValue("--main-text");
+            }
+            
+            const trashSVG = editButton.querySelector(".trash-svg");
+            if (trashSVG) {
+                trashSVG.style.stroke = getComputedStyle(root).getPropertyValue("--main-text");
+            }
+        });
+    });
+
 }
