@@ -20,11 +20,17 @@ export function showEditToDoDialog(clickedToDoId) {
     footer.classList.add("blur");
 
     for (const list of lists.getAllLists()) {
+        const toDoListOption = document.createElement("option");
+        toDoListOption.value = list.name;
+        toDoListOption.textContent = list.name;
+        toDoList.appendChild(toDoListOption);
+
         for (const todo of list.toDos) {
             if (clickedToDoId === todo.id) {
                toDoName.value = todo.name;
                toDoDescription.value = todo.description;
                toDoDue.value = todo.dueDate;
+               toDoList.value = todo.list;
             }
         }
     }
