@@ -290,10 +290,6 @@ s {
     font-size: 1.25rem;
 }
 
-#close-modal-button:hover {
-    color: var(--header-hover);
-}
-
 #edit-todo-title {
     font-size: 2rem;
     font-weight: 600;
