@@ -194,25 +194,33 @@ export function addHomePage() {
     const toDoEditButtons = document.querySelectorAll(".button-todo-edit");
     toDoEditButtons.forEach(editButton => {
         editButton.addEventListener("mouseover", () => {
-            const pencilSVG = editButton.querySelector(".pencil-svg");
-            if (pencilSVG) {
-                pencilSVG.style.stroke = getComputedStyle(root).getPropertyValue("--header-hover");
-            }
-            
-            const trashSVG = editButton.querySelector(".trash-svg");
-            if (trashSVG) {
-                trashSVG.style.stroke = getComputedStyle(root).getPropertyValue("--header-hover");
+            const svg = editButton.querySelector(".pencil-svg, .trash-svg")
+            if (svg) {
+                svg.style.stroke = getComputedStyle(root).getPropertyValue("--header-hover");
             }
         });
-        editButton.addEventListener("mouseout", () => {
-            const pencilSVG = editButton.querySelector(".pencil-svg");
-            if (pencilSVG) {
-                pencilSVG.style.stroke = getComputedStyle(root).getPropertyValue("--main-text");
+        editButton.addEventListener("mouseleave", () => {
+            const svg = editButton.querySelector(".pencil-svg, .trash-svg")
+            if (svg) {
+                svg.style.stroke = getComputedStyle(root).getPropertyValue("--main-text");
             }
-            
-            const trashSVG = editButton.querySelector(".trash-svg");
-            if (trashSVG) {
-                trashSVG.style.stroke = getComputedStyle(root).getPropertyValue("--main-text");
+        });
+        editButton.addEventListener("mousedown", () => {
+            const svg = editButton.querySelector(".pencil-svg, .trash-svg")
+            if (svg) {
+                svg.style.stroke = getComputedStyle(root).getPropertyValue("--header-click");
+            }
+        });
+        editButton.addEventListener("mouseup", () => {
+            const svg = editButton.querySelector(".pencil-svg, .trash-svg")
+            if (svg) {
+                svg.style.stroke = getComputedStyle(root).getPropertyValue("--header-hover");
+            }
+            if (svg.classList.contains("pencil-svg")) {
+                const toDo = editButton.closest(".home-todo");
+                const toDoName = toDo.querySelector(".todo-name")
+                console.log(toDoName.textContent);
+                showEditToDoDialog();
             }
         });
     });
