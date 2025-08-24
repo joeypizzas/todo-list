@@ -271,8 +271,9 @@ s {
     display: flex;
     flex-direction: column;
     width: 400px;
-    height: 400px;
+    min-height: 400px;
     justify-content: space-between;
+    gap: 1.5rem;
 }
 
 #edit-title-and-close-button {
@@ -322,8 +323,16 @@ s {
     border-radius: 5px;
     min-height: 1.25rem;
     font-size: 1rem;
-    padding: .25rem;
+    padding: .5rem;
     color: var(--main-text);
+}
+
+textarea, input {
+    font-family: inherit;
+}
+
+#todo-description {
+    min-height: 50px;
 }
 
 #edit-todo-save {
