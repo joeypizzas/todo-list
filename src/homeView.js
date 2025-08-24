@@ -36,6 +36,7 @@ export function addHomePage() {
         for (const todo of list.toDos) {
             const homeToDo = document.createElement("div");
             homeToDo.classList.add("home-todo");
+            homeToDo.dataset.id = todo.id;
             gridListItem.appendChild(homeToDo);
 
             const homeToDoCheckName = document.createElement("div");
@@ -62,11 +63,16 @@ export function addHomePage() {
             buttonToDoEdit.classList.add("button-todo-edit");
             buttonToDoEdit.classList.add("button-edit");
 
+            const storedDate = todo.dueDate;
+            const [year, month, day] = storedDate.split("-");
+            const dateObject = new Date(year, month - 1, day);
+            const localDate = dateObject.toLocaleDateString();
+
             if (todo.isComplete === "No") {
                 toDoName.textContent = todo.name;
                 homeToDoCheckName.appendChild(toDoName);
 
-                todoDue.textContent = `Due: ${todo.dueDate}`;
+                todoDue.textContent = `Due: ${localDate}`;
                 homeToDoDueEdit.appendChild(todoDue);
 
                 buttonToDoEdit.appendChild(svg.createPencilSVG());
@@ -82,7 +88,7 @@ export function addHomePage() {
 
                 const struckDue = document.createElement("s");
                 struckDue.classList.add("struck-due");
-                struckDue.textContent = `Due: ${todo.dueDate}`;
+                struckDue.textContent = `Due: ${localDate}`;
                 todoDue.appendChild(struckDue);
                 homeToDoDueEdit.appendChild(todoDue);
 
@@ -213,14 +219,14 @@ export function addHomePage() {
         });
         editButton.addEventListener("mouseup", () => {
             const svg = editButton.querySelector(".pencil-svg, .trash-svg")
+            const homeToDo = editButton.closest(".home-todo");
+            const id = homeToDo.dataset.id;
+
             if (svg) {
                 svg.style.stroke = getComputedStyle(root).getPropertyValue("--header-hover");
             }
             if (svg.classList.contains("pencil-svg")) {
-                const toDo = editButton.closest(".home-todo");
-                const toDoName = toDo.querySelector(".todo-name")
-                console.log(toDoName.textContent);
-                showEditToDoDialog();
+                showEditToDoDialog(id);
             }
         });
     });
