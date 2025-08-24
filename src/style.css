@@ -331,6 +331,10 @@ textarea, input {
     font-family: inherit;
 }
 
+select {
+    appearance: none;
+}
+
 #todo-description {
     min-height: 50px;
 }
