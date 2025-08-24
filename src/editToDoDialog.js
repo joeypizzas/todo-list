@@ -2,6 +2,7 @@
 
 import { lists } from "./list.js";
 
+const root = document.documentElement;
 const editToDoDialog = document.querySelector("#edit-todo-dialog");
 const lhn = document.querySelector("#lhn");
 const header = document.querySelector("#header");
@@ -11,9 +12,10 @@ const toDoName = document.querySelector("#todo-name");
 const toDoDescription = document.querySelector("#todo-description");
 const toDoDue = document.querySelector("#todo-due");
 const toDoList = document.querySelector("#todo-list");
+const closeModalButton = document.querySelector("#close-modal-button");
 
 export function showEditToDoDialog(clickedToDoId) {
-    editToDoDialog.show();
+    editToDoDialog.showModal();
     lhn.classList.add("blur");
     header.classList.add("blur");
     main.classList.add("blur");
@@ -43,3 +45,17 @@ export function hideEditToDoDialog() {
     main.classList.remove("blur");
     footer.classList.remove("blur");
 }
+
+closeModalButton.addEventListener("mouseover", () => {
+    closeModalButton.style.color = getComputedStyle(root).getPropertyValue("--header-hover");
+});
+closeModalButton.addEventListener("mouseout", () => {
+    closeModalButton.style.color = getComputedStyle(root).getPropertyValue("--main-text");
+});
+closeModalButton.addEventListener("mousedown", () => {
+    closeModalButton.style.color = getComputedStyle(root).getPropertyValue("--header-click");
+});
+closeModalButton.addEventListener("mouseup", () => {
+    closeModalButton.style.color = getComputedStyle(root).getPropertyValue("--header-hover");
+    hideEditToDoDialog();
+});
