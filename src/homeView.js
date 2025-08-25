@@ -232,3 +232,9 @@ export function addHomePage() {
     });
 
 }
+
+export function removeHomePage() {
+    const main = document.querySelector("#main");
+    const mainHome = document.querySelector("#main-home");
+    main.removeChild(mainHome);
+}
