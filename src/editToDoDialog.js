@@ -1,6 +1,8 @@
 // JS for edit to-do modal
 
 import { lists } from "./list.js";
+import { addHomePage, removeHomePage } from "./homeView.js";
+import { saveData } from "./storage.js";
 
 const root = document.documentElement;
 const editToDoDialog = document.querySelector("#edit-todo-dialog");
@@ -8,11 +10,13 @@ const lhn = document.querySelector("#lhn");
 const header = document.querySelector("#header");
 const main = document.querySelector("#main");
 const footer = document.querySelector("#footer");
+const editToDoForm = document.querySelector("#edit-todo-form");
 const toDoName = document.querySelector("#todo-name");
 const toDoDescription = document.querySelector("#todo-description");
 const toDoDue = document.querySelector("#todo-due");
 const toDoList = document.querySelector("#todo-list");
 const closeModalButton = document.querySelector("#close-modal-button");
+const editToDoSave = document.querySelector("#edit-todo-save");
 
 export function showEditToDoDialog(clickedToDoId) {
     editToDoDialog.showModal();
@@ -33,6 +37,7 @@ export function showEditToDoDialog(clickedToDoId) {
                toDoDescription.value = todo.description;
                toDoDue.value = todo.dueDate;
                toDoList.value = todo.list;
+               editToDoForm.dataset.id = todo.id;
             }
         }
     }
@@ -57,5 +62,50 @@ closeModalButton.addEventListener("mousedown", () => {
 });
 closeModalButton.addEventListener("mouseup", () => {
     closeModalButton.style.color = getComputedStyle(root).getPropertyValue("--header-hover");
+    hideEditToDoDialog();
+});
+
+editToDoSave.addEventListener("mouseover", () => {
+    editToDoSave.style.backgroundColor = getComputedStyle(root).getPropertyValue("--header-hover");
+});
+editToDoSave.addEventListener("mouseout", () => {
+    editToDoSave.style.backgroundColor = getComputedStyle(root).getPropertyValue("--header");
+});
+editToDoSave.addEventListener("mousedown", () => {
+    editToDoSave.style.backgroundColor = getComputedStyle(root).getPropertyValue("--header-click");
+});
+editToDoSave.addEventListener("mouseup", () => {
+    editToDoSave.style.backgroundColor = getComputedStyle(root).getPropertyValue("--header-hover");
+
+    for (const list of lists.getAllLists()) {
+        for (const todo of list.toDos) {
+            if (todo.id === editToDoForm.dataset.id) {
+                if (todo.name !== toDoName.value) {
+                    todo.editName(toDoName.value);
+                }
+                if (todo.description !== toDoDescription.value) {
+                    todo.editDescription(toDoDescription.value);
+                }
+                if (todo.dueDate !== toDoDue.value) {
+                    todo.editDueDate(toDoDue.value);
+                }
+                if (todo.list !== toDoList.value) {
+                    todo.editList(toDoList.value);
+                    list.removeToDo(todo);
+
+                    for (const newList of lists.getAllLists()) {
+                        if (newList.name === toDoList.value) {
+                            newList.addToDo(todo);
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    toDoList.replaceChildren();
+    saveData();
+    removeHomePage();
+    addHomePage();
     hideEditToDoDialog();
 });
