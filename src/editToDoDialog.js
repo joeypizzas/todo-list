@@ -17,6 +17,7 @@ const toDoDue = document.querySelector("#todo-due");
 const toDoList = document.querySelector("#todo-list");
 const closeModalButton = document.querySelector("#close-modal-button");
 const editToDoSave = document.querySelector("#edit-todo-save");
+const editToDoFields = document.querySelectorAll(".edit-todo-field");
 
 export function showEditToDoDialog(clickedToDoId) {
     editToDoDialog.showModal();
@@ -108,4 +109,22 @@ editToDoSave.addEventListener("mouseup", () => {
     removeHomePage();
     addHomePage();
     hideEditToDoDialog();
+});
+
+editToDoFields.forEach(field => {
+    field.addEventListener("mouseover", () => {
+        field.style.backgroundColor = getComputedStyle(root).getPropertyValue("--lhn-hover");
+        field.style.borderColor = getComputedStyle(root).getPropertyValue("--header-hover");
+    });
+    field.addEventListener("mouseout", () => {
+        field.style.backgroundColor = getComputedStyle(root).getPropertyValue("--header-text");
+        field.style.borderColor = getComputedStyle(root).getPropertyValue("--header");
+    });
+    field.addEventListener("mousedown", () => {
+        field.style.backgroundColor = getComputedStyle(root).getPropertyValue("--lhn-click");
+        field.style.borderColor = getComputedStyle(root).getPropertyValue("--header-click");
+    });
+    field.addEventListener("mouseup", () => {
+        field.style.backgroundColor = getComputedStyle(root).getPropertyValue("--header-text");
+    });
 });
