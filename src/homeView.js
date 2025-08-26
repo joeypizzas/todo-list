@@ -228,13 +228,27 @@ export function addHomePage() {
             if (svg.classList.contains("pencil-svg")) {
                 showEditToDoDialog(id);
             }
+            if (svg.classList.contains("trash-svg")) {
+                for (const list of lists.getAllLists()) {
+                    for (const todo of list.toDos) {
+                        if (id === todo.id) {
+                            list.removeToDo(todo);
+                        }
+                    }
+                }
+                saveData();
+                removeCompletedToDo(homeToDo);
+            }
         });
     });
-
 }
 
 export function removeHomePage() {
     const main = document.querySelector("#main");
     const mainHome = document.querySelector("#main-home");
     main.removeChild(mainHome);
+}
+
+function removeCompletedToDo(completedToDo) {
+    completedToDo.remove();
 }
