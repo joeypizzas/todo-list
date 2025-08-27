@@ -15,7 +15,7 @@ const toDoName = document.querySelector("#todo-name");
 const toDoDescription = document.querySelector("#todo-description");
 const toDoDue = document.querySelector("#todo-due");
 const toDoList = document.querySelector("#todo-list");
-const closeModalButton = document.querySelector("#close-modal-button");
+const closeModalButton = document.querySelector("#close-edit-modal-button");
 const editToDoSave = document.querySelector("#edit-todo-save");
 const editToDoFields = document.querySelectorAll(".edit-todo-field");
 
@@ -111,7 +111,7 @@ editToDoSave.addEventListener("mouseup", () => {
     hideEditToDoDialog();
 });
 
-editToDoFields.forEach(field => {
+editToDoFields.forEach(field => { // refactor into shared file for all dialogs
     field.addEventListener("mouseover", () => {
         field.style.backgroundColor = getComputedStyle(root).getPropertyValue("--lhn-hover");
         field.style.borderColor = getComputedStyle(root).getPropertyValue("--header-hover");
