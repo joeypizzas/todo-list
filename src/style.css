@@ -258,7 +258,7 @@ s {
     align-items: center;
 }
 
-#edit-todo-dialog[open] {
+.todo-dialog[open] {
     all: unset;
     position: fixed;
     top: 50%;
@@ -276,12 +276,12 @@ s {
     gap: 1.5rem;
 }
 
-#edit-title-and-close-button {
+.title-and-close-button {
     display: flex;
     flex-direction: column;
 }
 
-#close-modal-button {
+.close-modal-button {
     all: unset;
     cursor: pointer;
     color: var(--main-text);
@@ -290,13 +290,13 @@ s {
     font-size: 1.25rem;
 }
 
-#edit-todo-title {
+.modal-title {
     font-size: 2rem;
     font-weight: 600;
     color: var(--main-text);
 }
 
-#edit-todo-form {
+.form {
     display: flex;
     flex-direction: column;
     gap: .75rem;
@@ -337,7 +337,7 @@ select {
     min-height: 50px;
 }
 
-#edit-todo-save {
+.dialog-save {
     padding: .5rem 1rem .5rem 1rem;
     border-radius: 8px;
     border: none;
@@ -351,6 +351,16 @@ select {
 
 .blur {
     filter: blur(10px);
+}
+
+label {
+    font-size: 1rem;
+    color: var(--main-text);
+}
+
+.radio-buttons {
+    display: flex;
+    gap: .25rem;
 }
 
 #footer {
