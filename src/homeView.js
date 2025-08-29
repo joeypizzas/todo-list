@@ -4,7 +4,7 @@ import { lists } from "./list.js";
 import { svg } from "./svgUtils.js";
 import { ToDo } from "./todo.js";
 import { saveData } from "./storage.js";
-import { showEditToDoDialog, hideEditToDoDialog } from "./editToDoDialog.js";
+import { showEditToDoDialog } from "./editToDoDialog.js";
 
 export function addHomePage() {
     const main = document.querySelector("#main");
