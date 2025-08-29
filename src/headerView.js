@@ -1,5 +1,7 @@
 // JS for Header DOM
 
+import { showNewDialog } from "./newDialog.js";
+
 export function initHeaderListeners() {
     const root = document.documentElement;
     const homeNewButton = document.querySelector("#home-new-button");
@@ -24,6 +26,7 @@ export function initHeaderListeners() {
         homeNewButton.style.backgroundColor = getComputedStyle(root).getPropertyValue("--header-hover");
         homeNewButton.style.color = getComputedStyle(root).getPropertyValue("--header-text");
         plusSVG.style.stroke = getComputedStyle(root).getPropertyValue("--header-text");
+        showNewDialog();
     });
     
 }
