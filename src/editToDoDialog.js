@@ -63,6 +63,7 @@ closeModalButton.addEventListener("mousedown", () => {
 });
 closeModalButton.addEventListener("mouseup", () => {
     closeModalButton.style.color = getComputedStyle(root).getPropertyValue("--header-hover");
+    toDoList.replaceChildren();
     hideEditToDoDialog();
 });
 
