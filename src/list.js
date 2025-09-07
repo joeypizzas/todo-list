@@ -1,9 +1,11 @@
 // List class
 
 export class List { // Creates object to group todos
-    constructor(name) {
+    constructor(name, id) {
         this.name = name;
         this.toDos = [];
+        this.id = id || Date.now().toString(36) + Math.random().toString(36).substring(2, 8);
+
     }
 
     editName(updatedName) {
@@ -54,9 +56,15 @@ export const lists = (function listManager() { // Array to organize lists and ma
         allLists = listsFromStorage;
     }
 
+    function removeList(listToRemove) {
+        let index = allLists.findIndex(list => list.name === listToRemove);
+        allLists.splice(index, 1);
+    }
+
     return {
         addNewList,
         getAllLists,
-        setAllLists
+        setAllLists,
+        removeList
     }
 })();
