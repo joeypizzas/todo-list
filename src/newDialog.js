@@ -15,11 +15,16 @@ const footer = document.querySelector("#footer");
 const closeNewModalButton = document.querySelector("#close-new-modal-button");
 const newSave = document.querySelector("#new-save");
 const radioButtons = document.querySelector(".radio-buttons");
-const checkedRadioButton = radioButtons.querySelector("input[name='todo-or-list']:checked");
 const newToDoName = document.querySelector("#new-todo-name");
 const newToDoDescription = document.querySelector("#new-todo-description");
 const newToDoDue = document.querySelector("#new-todo-due");
 const newToDoList = document.querySelector("#new-todo-list");
+const todoRadio = document.querySelector("#todo-radio");
+const listRadio = document.querySelector("#list-radio");
+const newDescriptionLabelAndField = document.querySelector("#new-description-label-and-field");
+const newDueLabelAndField = document.querySelector("#new-due-label-and-field");
+const newListLabelAndField = document.querySelector("#new-list-label-and-field");
+const newForm = document.querySelector("#new-form");
 
 export function showNewDialog() {
     newDialog.showModal();
@@ -34,6 +39,8 @@ export function showNewDialog() {
         toDoListOption.textContent = list.name;
         newToDoList.appendChild(toDoListOption);
     }
+
+    todoRadio.checked = true;
 }
 
 function hideNewDialog() {
@@ -42,6 +49,18 @@ function hideNewDialog() {
     header.classList.remove("blur");
     main.classList.remove("blur");
     footer.classList.remove("blur");
+}
+
+function showListForm() {
+    newDescriptionLabelAndField.classList.add("hidden");
+    newDueLabelAndField.classList.add("hidden");
+    newListLabelAndField.classList.add("hidden");
+}
+
+function showToDoForm() {
+    newDescriptionLabelAndField.classList.remove("hidden");
+    newDueLabelAndField.classList.remove("hidden");
+    newListLabelAndField.classList.remove("hidden");
 }
 
 closeNewModalButton.addEventListener("mouseover", () => {
@@ -56,6 +75,8 @@ closeNewModalButton.addEventListener("mousedown", () => {
 closeNewModalButton.addEventListener("mouseup", () => {
     closeNewModalButton.style.color = getComputedStyle(root).getPropertyValue("--header-hover");
     newToDoList.replaceChildren();
+    showToDoForm();
+    newForm.reset(); 
     hideNewDialog();
 });
 
@@ -71,23 +92,32 @@ newSave.addEventListener("mousedown", () => {
 newSave.addEventListener("mouseup", () => {
     newSave.style.backgroundColor = getComputedStyle(root).getPropertyValue("--header-hover");
 
-    if (checkedRadioButton.value === "To-Do") { // typeerror here
+    const checkedRadioButton = radioButtons.querySelector("input[name='todo-or-list']:checked");
+    if (checkedRadioButton.value === "To-Do") {
         const newToDo = new ToDo(newToDoName.value, newToDoDue.value, newToDoDescription.value, "No", newToDoList.value);
         for (const list of lists.getAllLists()) {
             if (list.name === newToDoList.value) {
                 list.addToDo(newToDo);
             }
         }
+    } else {
+        const newList = new List(newToDoName.value);
+        lists.addNewList(newList);
     }
     
-    // Check whether todo or list
-    // if todo, get values of all fields and create new todo, then locate matching list and add it 
-    // if list, create new list 
-    // replace inputs, save data, remove home page, add home page, hide dialog
-
     newToDoList.replaceChildren();
+    newForm.reset();
     saveData();
     removeHomePage();
     addHomePage();
-    hideEditToDoDialog();
+    showToDoForm();
+    hideNewDialog();
+});
+
+listRadio.addEventListener("mouseup", () => {
+    showListForm();
+});
+
+todoRadio.addEventListener("mouseup", () => {
+    showToDoForm();
 });
