@@ -5,6 +5,7 @@ import { svg } from "./svgUtils.js";
 import { ToDo } from "./todo.js";
 import { saveData } from "./storage.js";
 import { showEditToDoDialog } from "./editToDoDialog.js";
+import { initLHNListeners, addLHNLists, removeLHNLists } from "./lhnView.js";
 
 export function addHomePage() {
     const main = document.querySelector("#main");
@@ -24,6 +25,7 @@ export function addHomePage() {
     for (const list of lists.getAllLists()) {
         const gridListItem = document.createElement("div");
         gridListItem.classList.add("grid-list-item");
+        gridListItem.dataset.id = list.id;
         listsGrid.appendChild(gridListItem);
 
         const homeListHeader = document.createElement("button");
@@ -37,6 +39,7 @@ export function addHomePage() {
             const deleteListButton = document.createElement("button");
             deleteListButton.classList.add("button-edit");
             deleteListButton.classList.add("button-todo-edit");
+            deleteListButton.classList.add("delete-list-button");
             deleteListButton.appendChild(svg.createTrashSVG());
             listNameAndDelete.appendChild(deleteListButton);
         } else {
@@ -224,7 +227,7 @@ export function addHomePage() {
             }
         });
         editButton.addEventListener("mousedown", () => {
-            const svg = editButton.querySelector(".pencil-svg, .trash-svg") // adjust logic for deleting empty list
+            const svg = editButton.querySelector(".pencil-svg, .trash-svg") 
             if (svg) {
                 svg.style.stroke = getComputedStyle(root).getPropertyValue("--header-click");
             }
@@ -232,7 +235,10 @@ export function addHomePage() {
         editButton.addEventListener("mouseup", () => {
             const svg = editButton.querySelector(".pencil-svg, .trash-svg")
             const homeToDo = editButton.closest(".home-todo");
-            const id = homeToDo.dataset.id;
+            let id;
+            if (homeToDo) {
+                id = homeToDo.dataset.id;
+            }
 
             if (svg) {
                 svg.style.stroke = getComputedStyle(root).getPropertyValue("--header-hover");
@@ -241,15 +247,31 @@ export function addHomePage() {
                 showEditToDoDialog(id);
             }
             if (svg.classList.contains("trash-svg")) {
-                for (const list of lists.getAllLists()) {
-                    for (const todo of list.toDos) {
-                        if (id === todo.id) {
-                            list.removeToDo(todo);
+                if (editButton.classList.contains("delete-list-button")) {
+                    const gridListItem = editButton.closest(".grid-list-item");
+                    const listToDelete = gridListItem.querySelector(".home-list-header");
+                    for (const list of lists.getAllLists()) {
+                        if (gridListItem.dataset.id === list.id) {
+                            lists.removeList(listToDelete.textContent);
+                            removeHomePage();
+                            addHomePage();
+                            removeLHNLists();
+                            addLHNLists();
+                            initLHNListeners();
+                        }
+                    }
+                } else {
+                    for (const list of lists.getAllLists()) {
+                        for (const todo of list.toDos) {
+                            if (id === todo.id) {
+                                list.removeToDo(todo);
+                                removeHomePage();
+                                addHomePage();
+                            }
                         }
                     }
                 }
                 saveData();
-                removeCompletedToDo(homeToDo);
             }
         });
     });
@@ -259,8 +281,4 @@ export function removeHomePage() {
     const main = document.querySelector("#main");
     const mainHome = document.querySelector("#main-home");
     main.removeChild(mainHome);
-}
-
-function removeCompletedToDo(completedToDo) {
-    completedToDo.remove();
 }
