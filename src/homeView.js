@@ -29,7 +29,19 @@ export function addHomePage() {
         const homeListHeader = document.createElement("button");
         homeListHeader.classList.add("home-list-header");
         homeListHeader.textContent = list.name;
-        gridListItem.appendChild(homeListHeader);
+        if (list.toDos.length === 0) {
+            const listNameAndDelete = document.createElement("div");
+            listNameAndDelete.classList.add("list-name-and-delete");
+            gridListItem.appendChild(listNameAndDelete);
+            listNameAndDelete.appendChild(homeListHeader);
+            const deleteListButton = document.createElement("button");
+            deleteListButton.classList.add("button-edit");
+            deleteListButton.classList.add("button-todo-edit");
+            deleteListButton.appendChild(svg.createTrashSVG());
+            listNameAndDelete.appendChild(deleteListButton);
+        } else {
+            gridListItem.appendChild(homeListHeader);
+        }
 
         homeListHeader.appendChild(svg.createArrowSVG());
 
@@ -212,7 +224,7 @@ export function addHomePage() {
             }
         });
         editButton.addEventListener("mousedown", () => {
-            const svg = editButton.querySelector(".pencil-svg, .trash-svg")
+            const svg = editButton.querySelector(".pencil-svg, .trash-svg") // adjust logic for deleting empty list
             if (svg) {
                 svg.style.stroke = getComputedStyle(root).getPropertyValue("--header-click");
             }
