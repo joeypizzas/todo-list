@@ -15,7 +15,8 @@ export function saveData() { // Saves lists, todos, and profile in local storage
             isComplete: todo.isComplete,
             list: todo.list,
             id: todo.id
-        }))
+        })),
+        id: list.id
     }));
 
     const profileData = {
@@ -30,7 +31,7 @@ export function loadData() { // Loads lists, todos, and profile from local stora
     const savedListData = localStorage.getItem("lists");
     const rawLists = JSON.parse(savedListData);
     const rehydratedLists = rawLists.map(eachList => { // Rehydrates lists and to-dos to make them class instances and re-add methods
-        const list = new List(eachList.name);
+        const list = new List(eachList.name, eachList.id);
         eachList.toDos.forEach(eachToDo => {
             const toDo = new ToDo(eachToDo.name, eachToDo.dueDate, eachToDo.description, eachToDo.isComplete, eachToDo.list, eachToDo.id);
             list.addToDo(toDo);
