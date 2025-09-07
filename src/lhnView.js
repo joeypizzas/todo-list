@@ -1,5 +1,26 @@
 // JS for LHN DOM
 
+import { lists } from "./list.js";
+
+const listsContainer = document.querySelector("#lists-container");
+
+export function addLHNLists() {
+    for (const list of lists.getAllLists()) {
+        const listLHN = document.createElement("button");
+        listLHN.classList.add("item-lhn");
+        listLHN.classList.add("item-lhn-child");
+        listLHN.textContent = list.name;
+        listsContainer.appendChild(listLHN);
+    }
+}
+
+export function removeLHNLists() {
+    const allLHNLists = document.querySelectorAll(".item-lhn-child");
+    allLHNLists.forEach(list => {
+        list.remove();
+    });
+}
+
 export function initLHNListeners() {
     const root = document.documentElement;
     
