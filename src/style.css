@@ -363,6 +363,10 @@ label {
     gap: .25rem;
 }
 
+.hidden {
+    visibility: hidden;
+}
+
 #footer {
     grid-area: footer;
     background-color: var(--main-background);
