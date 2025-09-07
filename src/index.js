@@ -6,7 +6,7 @@ import { lists } from "./list.js";
 import { List } from "./list.js";
 import { profile } from "./profile.js";
 import { saveData, loadData } from "./storage.js";
-import { initLHNListeners } from "./lhnView.js";
+import { addLHNLists, initLHNListeners, } from "./lhnView.js";
 import { initProfileListeners } from "./profileView.js";
 import { initHeaderListeners } from "./headerView.js";
 import { addHomePage } from "./homeView.js";
@@ -42,6 +42,7 @@ fitness.addToDo(fitness1);
 fitness.addToDo(fitness2);
 fitness.addToDo(fitness3);
 
+addLHNLists();
 initLHNListeners();
 initProfileListeners();
 initHeaderListeners();
