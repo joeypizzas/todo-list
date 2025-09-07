@@ -5,6 +5,7 @@ import { List } from "./list.js";
 import { addHomePage, removeHomePage } from "./homeView.js";
 import { saveData } from "./storage.js";
 import { ToDo } from "./todo.js";
+import { addLHNLists, removeLHNLists, initLHNListeners } from "./lhnView.js";
 
 const root = document.documentElement;
 const newDialog = document.querySelector("#new-dialog");
@@ -103,6 +104,9 @@ newSave.addEventListener("mouseup", () => {
     } else {
         const newList = new List(newToDoName.value);
         lists.addNewList(newList);
+        removeLHNLists();
+        addLHNLists();
+        initLHNListeners();
     }
     
     newToDoList.replaceChildren();
