@@ -46,3 +46,5 @@ initLHNListeners();
 initProfileListeners();
 initHeaderListeners();
 addHomePage();
+
+window.lists = lists;
