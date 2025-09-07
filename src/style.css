@@ -193,6 +193,12 @@ html, body {
     border: 2px solid var(--header);
 }
 
+.list-name-and-delete {
+    display: flex;
+    justify-content: space-between;
+    padding-right: .5rem;
+}
+
 .home-list-header {
     all: unset;
     cursor: pointer;
