@@ -7,117 +7,113 @@ import { saveData } from "./storage.js";
 import { showEditToDoDialog } from "./editToDoDialog.js";
 import { initLHNListeners, addLHNLists, removeLHNLists } from "./lhnView.js";
 
-export function addHomePage() {
+export function addListPage(listIDToShow) {
     const main = document.querySelector("#main");
 
-    const mainHome = document.createElement("div");
-    mainHome.id = "main-home";
-    mainHome.classList.add("main-container");
-
-    const mainHomeTitle = document.createElement("div");
-    mainHomeTitle.id = "main-home-title";
-    mainHomeTitle.classList.add("main-title");
-    mainHomeTitle.textContent = "Home";
-    mainHome.appendChild(mainHomeTitle);
+    const mainList = document.createElement("div");
+    mainList.id = "main-list";
+    mainList.classList.add("main-container");
 
     const listsGrid = document.createElement("div");
     listsGrid.id = "home-lists-grid";
     listsGrid.classList.add("lists-grid");
-    mainHome.appendChild(listsGrid);
+    mainList.appendChild(listsGrid);
 
-    for (const list of lists.getAllLists()) {
-        const gridListItem = document.createElement("div");
-        gridListItem.classList.add("grid-list-item");
-        gridListItem.dataset.id = list.id;
-        listsGrid.appendChild(gridListItem);
-
-        const homeListHeader = document.createElement("button");
-        homeListHeader.classList.add("list-header");
-        homeListHeader.textContent = list.name;
-        if (list.toDos.length === 0) {
-            const listNameAndDelete = document.createElement("div");
-            listNameAndDelete.classList.add("list-name-and-delete");
-            gridListItem.appendChild(listNameAndDelete);
-            listNameAndDelete.appendChild(homeListHeader);
-            const deleteListButton = document.createElement("button");
-            deleteListButton.classList.add("button-edit");
-            deleteListButton.classList.add("button-todo-edit");
-            deleteListButton.classList.add("delete-list-button");
-            deleteListButton.appendChild(svg.createTrashSVG());
-            listNameAndDelete.appendChild(deleteListButton);
-        } else {
-            gridListItem.appendChild(homeListHeader);
-        }
-
-        homeListHeader.appendChild(svg.createArrowSVG());
-
-        for (const todo of list.toDos) {
-            const homeToDo = document.createElement("div");
-            homeToDo.classList.add("todo");
-            homeToDo.dataset.id = todo.id;
-            gridListItem.appendChild(homeToDo);
-
-            const homeToDoCheckName = document.createElement("div");
-            homeToDoCheckName.classList.add("todo-check-name");
-            homeToDo.appendChild(homeToDoCheckName);
-
-            const homeToDoCheckbox = document.createElement("button");
-            homeToDoCheckbox.classList.add("todo-checkbox");
-            homeToDoCheckName.appendChild(homeToDoCheckbox);
-
-            homeToDoCheckbox.appendChild(svg.createCheckSVG());
-
-            const toDoName = document.createElement("div");
-            toDoName.classList.add("todo-name");
-
-            const homeToDoDueEdit = document.createElement("div");
-            homeToDoDueEdit.classList.add("todo-due-edit");
-            homeToDo.appendChild(homeToDoDueEdit);
-
-            const todoDue = document.createElement("div");
-            todoDue.classList.add("todo-due");
-
-            const buttonToDoEdit = document.createElement("button");
-            buttonToDoEdit.classList.add("button-todo-edit");
-            buttonToDoEdit.classList.add("button-edit");
-
-            const storedDate = todo.dueDate;
-            const [year, month, day] = storedDate.split("-");
-            const dateObject = new Date(year, month - 1, day);
-            const localDate = dateObject.toLocaleDateString();
-
-            if (todo.isComplete === "No") {
-                toDoName.textContent = todo.name;
-                homeToDoCheckName.appendChild(toDoName);
-
-                todoDue.textContent = `Due: ${localDate}`;
-                homeToDoDueEdit.appendChild(todoDue);
-
-                buttonToDoEdit.appendChild(svg.createPencilSVG());
-
+    for (const list of lists.getAllLists()) { // check from here and test
+        if (list.id === listIDToShow) {
+            const gridListItem = document.createElement("div");
+            gridListItem.classList.add("grid-list-item");
+            gridListItem.dataset.id = list.id;
+            listsGrid.appendChild(gridListItem);
+    
+            const homeListHeader = document.createElement("button");
+            homeListHeader.classList.add("list-header");
+            homeListHeader.textContent = list.name;
+            if (list.toDos.length === 0) {
+                const listNameAndDelete = document.createElement("div");
+                listNameAndDelete.classList.add("list-name-and-delete");
+                gridListItem.appendChild(listNameAndDelete);
+                listNameAndDelete.appendChild(homeListHeader);
+                const deleteListButton = document.createElement("button");
+                deleteListButton.classList.add("button-edit");
+                deleteListButton.classList.add("button-todo-edit");
+                deleteListButton.classList.add("delete-list-button");
+                deleteListButton.appendChild(svg.createTrashSVG());
+                listNameAndDelete.appendChild(deleteListButton);
             } else {
-                homeToDoCheckbox.classList.add("checked");
-                
-                const struckName = document.createElement("s");
-                struckName.classList.add("struck-name");
-                struckName.textContent = todo.name;
-                toDoName.appendChild(struckName);
-                homeToDoCheckName.appendChild(toDoName);
-
-                const struckDue = document.createElement("s");
-                struckDue.classList.add("struck-due");
-                struckDue.textContent = `Due: ${localDate}`;
-                todoDue.appendChild(struckDue);
-                homeToDoDueEdit.appendChild(todoDue);
-
-                buttonToDoEdit.appendChild(svg.createTrashSVG());
+                gridListItem.appendChild(homeListHeader);
             }
-
-            homeToDoDueEdit.appendChild(buttonToDoEdit);
+    
+            homeListHeader.appendChild(svg.createArrowSVG());
+    
+            for (const todo of list.toDos) {
+                const homeToDo = document.createElement("div");
+                homeToDo.classList.add("todo");
+                homeToDo.dataset.id = todo.id;
+                gridListItem.appendChild(homeToDo);
+    
+                const homeToDoCheckName = document.createElement("div");
+                homeToDoCheckName.classList.add("todo-check-name");
+                homeToDo.appendChild(homeToDoCheckName);
+    
+                const homeToDoCheckbox = document.createElement("button");
+                homeToDoCheckbox.classList.add("todo-checkbox");
+                homeToDoCheckName.appendChild(homeToDoCheckbox);
+    
+                homeToDoCheckbox.appendChild(svg.createCheckSVG());
+    
+                const toDoName = document.createElement("div");
+                toDoName.classList.add("todo-name");
+    
+                const homeToDoDueEdit = document.createElement("div");
+                homeToDoDueEdit.classList.add("todo-due-edit");
+                homeToDo.appendChild(homeToDoDueEdit);
+    
+                const todoDue = document.createElement("div");
+                todoDue.classList.add("todo-due");
+    
+                const buttonToDoEdit = document.createElement("button");
+                buttonToDoEdit.classList.add("button-todo-edit");
+                buttonToDoEdit.classList.add("button-edit");
+    
+                const storedDate = todo.dueDate;
+                const [year, month, day] = storedDate.split("-");
+                const dateObject = new Date(year, month - 1, day);
+                const localDate = dateObject.toLocaleDateString();
+    
+                if (todo.isComplete === "No") {
+                    toDoName.textContent = todo.name;
+                    homeToDoCheckName.appendChild(toDoName);
+    
+                    todoDue.textContent = `Due: ${localDate}`;
+                    homeToDoDueEdit.appendChild(todoDue);
+    
+                    buttonToDoEdit.appendChild(svg.createPencilSVG());
+    
+                } else {
+                    homeToDoCheckbox.classList.add("checked");
+                    
+                    const struckName = document.createElement("s");
+                    struckName.classList.add("struck-name");
+                    struckName.textContent = todo.name;
+                    toDoName.appendChild(struckName);
+                    homeToDoCheckName.appendChild(toDoName);
+    
+                    const struckDue = document.createElement("s");
+                    struckDue.classList.add("struck-due");
+                    struckDue.textContent = `Due: ${localDate}`;
+                    todoDue.appendChild(struckDue);
+                    homeToDoDueEdit.appendChild(todoDue);
+    
+                    buttonToDoEdit.appendChild(svg.createTrashSVG());
+                }
+    
+                homeToDoDueEdit.appendChild(buttonToDoEdit);
+            }
         }
     }
 
-    main.appendChild(mainHome);
+    main.appendChild(mainList);
 
     const root = document.documentElement;
 
