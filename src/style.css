@@ -163,7 +163,7 @@ html, body {
     overflow-y: auto;
 }
 
-#main-home {
+.main-container {
     display: flex;
     flex-direction: column;
     align-items: start;
@@ -171,12 +171,12 @@ html, body {
     gap: 2rem;
 }
 
-#main-home-title {
+.main-title {
     font-size: 1.75rem;
     color: var(--main-text);
 }
 
-#lists-grid {
+.lists-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
     gap: 1rem;
@@ -199,7 +199,7 @@ html, body {
     padding-right: .5rem;
 }
 
-.home-list-header {
+.list-header {
     all: unset;
     cursor: pointer;
     align-self: start;
@@ -212,7 +212,7 @@ html, body {
     font-size: 1.5rem;
 }
 
-.home-todo {
+.todo {
     display: flex;
     justify-content: space-between;
     gap: .5rem;
@@ -221,13 +221,13 @@ html, body {
     padding: .5rem;
 }
 
-.home-todo-check-name {
+.todo-check-name {
     display: flex;
     gap: .75rem;
     align-items: center;
 }
 
-.home-todo-checkbox {
+.todo-checkbox {
     background-color: var(--main-background);
     border: 2px solid var(--header);
     padding: .2rem;
@@ -238,11 +238,11 @@ html, body {
     align-items: center;
 }
 
-.home-todo-checkbox.checked .check-svg {
+.todo-checkbox.checked .check-svg {
     visibility: visible;
 }
 
-.home-todo-checkbox.checked {
+.todo-checkbox.checked {
     background-color: var(--header);
 }
 
@@ -258,7 +258,7 @@ s {
     stroke: var(--header-text);
 }
 
-.home-todo-due-edit {
+.todo-due-edit {
     display: flex;
     gap: .75rem;
     align-items: center;
