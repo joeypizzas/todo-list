@@ -12,14 +12,17 @@ export function addHomePage() {
 
     const mainHome = document.createElement("div");
     mainHome.id = "main-home";
+    mainHome.classList.add("main-container");
 
     const mainHomeTitle = document.createElement("div");
     mainHomeTitle.id = "main-home-title";
+    mainHomeTitle.classList.add("main-title");
     mainHomeTitle.textContent = "Home";
     mainHome.appendChild(mainHomeTitle);
 
     const listsGrid = document.createElement("div");
-    listsGrid.id = "lists-grid";
+    listsGrid.id = "home-lists-grid";
+    listsGrid.classList.add("lists-grid");
     mainHome.appendChild(listsGrid);
 
     for (const list of lists.getAllLists()) {
@@ -29,7 +32,7 @@ export function addHomePage() {
         listsGrid.appendChild(gridListItem);
 
         const homeListHeader = document.createElement("button");
-        homeListHeader.classList.add("home-list-header");
+        homeListHeader.classList.add("list-header");
         homeListHeader.textContent = list.name;
         if (list.toDos.length === 0) {
             const listNameAndDelete = document.createElement("div");
@@ -50,16 +53,16 @@ export function addHomePage() {
 
         for (const todo of list.toDos) {
             const homeToDo = document.createElement("div");
-            homeToDo.classList.add("home-todo");
+            homeToDo.classList.add("todo");
             homeToDo.dataset.id = todo.id;
             gridListItem.appendChild(homeToDo);
 
             const homeToDoCheckName = document.createElement("div");
-            homeToDoCheckName.classList.add("home-todo-check-name");
+            homeToDoCheckName.classList.add("todo-check-name");
             homeToDo.appendChild(homeToDoCheckName);
 
             const homeToDoCheckbox = document.createElement("button");
-            homeToDoCheckbox.classList.add("home-todo-checkbox");
+            homeToDoCheckbox.classList.add("todo-checkbox");
             homeToDoCheckName.appendChild(homeToDoCheckbox);
 
             homeToDoCheckbox.appendChild(svg.createCheckSVG());
@@ -68,7 +71,7 @@ export function addHomePage() {
             toDoName.classList.add("todo-name");
 
             const homeToDoDueEdit = document.createElement("div");
-            homeToDoDueEdit.classList.add("home-todo-due-edit");
+            homeToDoDueEdit.classList.add("todo-due-edit");
             homeToDo.appendChild(homeToDoDueEdit);
 
             const todoDue = document.createElement("div");
@@ -118,7 +121,7 @@ export function addHomePage() {
 
     const root = document.documentElement;
 
-    const toDoCheckboxes = document.querySelectorAll(".home-todo-checkbox");
+    const toDoCheckboxes = document.querySelectorAll(".todo-checkbox");
     toDoCheckboxes.forEach(checkbox => {
         checkbox.addEventListener("mouseover", () => {
             if (!checkbox.classList.contains("checked")) {
@@ -151,7 +154,7 @@ export function addHomePage() {
                 checkbox.style.backgroundColor = getComputedStyle(root).getPropertyValue("--header-hover");
                 checkbox.style.borderColor = getComputedStyle(root).getPropertyValue("--header-hover");
 
-                const homeToDo = checkbox.closest(".home-todo");
+                const homeToDo = checkbox.closest(".todo");
 
                 const toDoName = homeToDo.querySelector(".todo-name");
                 const struckName = document.createElement("s");
@@ -185,7 +188,7 @@ export function addHomePage() {
                 checkbox.style.backgroundColor = getComputedStyle(root).getPropertyValue("--lhn-hover");
                 checkbox.style.borderColor = getComputedStyle(root).getPropertyValue("--header");
 
-                const homeToDo = checkbox.closest(".home-todo");
+                const homeToDo = checkbox.closest(".todo");
 
                 const toDoName = homeToDo.querySelector(".todo-name");
                 const struckName = homeToDo.querySelector(".struck-name");
@@ -234,7 +237,7 @@ export function addHomePage() {
         });
         editButton.addEventListener("mouseup", () => {
             const svg = editButton.querySelector(".pencil-svg, .trash-svg")
-            const homeToDo = editButton.closest(".home-todo");
+            const homeToDo = editButton.closest(".todo");
             let id;
             if (homeToDo) {
                 id = homeToDo.dataset.id;
@@ -249,12 +252,10 @@ export function addHomePage() {
             if (svg.classList.contains("trash-svg")) {
                 if (editButton.classList.contains("delete-list-button")) {
                     const gridListItem = editButton.closest(".grid-list-item");
-                    const listToDelete = gridListItem.querySelector(".home-list-header");
+                    const listToDelete = gridListItem.querySelector(".list-header");
                     for (const list of lists.getAllLists()) {
                         if (gridListItem.dataset.id === list.id) {
                             lists.removeList(listToDelete.textContent);
-                            removeHomePage();
-                            addHomePage();
                             removeLHNLists();
                             addLHNLists();
                             initLHNListeners();
@@ -265,12 +266,12 @@ export function addHomePage() {
                         for (const todo of list.toDos) {
                             if (id === todo.id) {
                                 list.removeToDo(todo);
-                                removeHomePage();
-                                addHomePage();
                             }
                         }
                     }
                 }
+                removeHomePage();
+                addHomePage();
                 saveData();
             }
         });
@@ -279,6 +280,6 @@ export function addHomePage() {
 
 export function removeHomePage() {
     const main = document.querySelector("#main");
-    const mainHome = document.querySelector("#main-home");
+    const mainHome = document.querySelector(".main-container");
     main.removeChild(mainHome);
 }
