@@ -10,6 +10,7 @@ export function addLHNLists() {
         listLHN.classList.add("item-lhn");
         listLHN.classList.add("item-lhn-child");
         listLHN.textContent = list.name;
+        listLHN.dataset.id = list.id;
         listsContainer.appendChild(listLHN);
     }
 }
