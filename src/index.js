@@ -10,6 +10,7 @@ import { addLHNLists, initLHNListeners, } from "./lhnView.js";
 import { initProfileListeners } from "./profileView.js";
 import { initHeaderListeners } from "./headerView.js";
 import { addHomePage } from "./homeView.js";
+import { addListPage } from "./listView.js";
 
 const personal = new List ("Personal");
 lists.addNewList(personal);
@@ -48,4 +49,5 @@ initProfileListeners();
 initHeaderListeners();
 addHomePage();
 
+window.addListPage = addListPage;
 window.lists = lists;
