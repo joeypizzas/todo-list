@@ -19,7 +19,7 @@ export function addListPage(listIDToShow) {
     listsGrid.classList.add("lists-grid");
     mainList.appendChild(listsGrid);
 
-    for (const list of lists.getAllLists()) { // check from here and test
+    for (const list of lists.getAllLists()) {
         if (list.id === listIDToShow) {
             const gridListItem = document.createElement("div");
             gridListItem.classList.add("grid-list-item");
@@ -274,8 +274,8 @@ export function addListPage(listIDToShow) {
     });
 }
 
-export function removeHomePage() {
+export function removeListPage() {
     const main = document.querySelector("#main");
-    const mainHome = document.querySelector(".main-container");
-    main.removeChild(mainHome);
+    const mainList = document.querySelector(".main-container");
+    main.removeChild(mainList);
 }
