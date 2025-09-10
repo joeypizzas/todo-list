@@ -2,10 +2,10 @@
 
 import { lists } from "./list.js";
 import { svg } from "./svgUtils.js";
-import { ToDo } from "./todo.js";
 import { saveData } from "./storage.js";
 import { showEditToDoDialog } from "./editToDoDialog.js";
 import { initLHNListeners, addLHNLists, removeLHNLists } from "./lhnView.js";
+import { addListPage } from "./listView.js";
 
 export function addHomePage() {
     const main = document.querySelector("#main");
@@ -276,7 +276,34 @@ export function addHomePage() {
             }
         });
     });
+
+    const gridListItems = document.querySelectorAll(".grid-list-item");
+    gridListItems.forEach(gridItem => {
+        const listHeader = gridItem.querySelector(".list-header");
+        const arrowSVG = gridItem.querySelector(".arrow-svg");
+        listHeader.addEventListener("mouseover", () => {
+            listHeader.style.color = getComputedStyle(root).getPropertyValue("--header-hover");
+            arrowSVG.style.stroke = getComputedStyle(root).getPropertyValue("--header-hover");
+        });
+        listHeader.addEventListener("mouseout", () => {
+            listHeader.style.color = getComputedStyle(root).getPropertyValue("--main-text");
+            arrowSVG.style.stroke = getComputedStyle(root).getPropertyValue("--main-text");
+        });
+        listHeader.addEventListener("mousedown", () => {
+            listHeader.style.color = getComputedStyle(root).getPropertyValue("--header-click");
+            arrowSVG.style.stroke = getComputedStyle(root).getPropertyValue("--header-click");
+        });
+        listHeader.addEventListener("mouseup", () => {
+            listHeader.style.color = getComputedStyle(root).getPropertyValue("--header-hover");
+            arrowSVG.style.stroke = getComputedStyle(root).getPropertyValue("--header-hover");
+            removeHomePage();
+            addListPage(gridItem.dataset.id);
+
+        });
+
+    });
 }
+
 
 export function removeHomePage() {
     const main = document.querySelector("#main");
