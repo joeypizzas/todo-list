@@ -1,6 +1,8 @@
 // JS for LHN DOM
 
 import { lists } from "./list.js";
+import { addHomePage, removeHomePage } from "./homeView.js";
+import { addListPage, removeListPage } from "./listView.js";
 
 const listsContainer = document.querySelector("#lists-container");
 
@@ -37,6 +39,8 @@ export function initLHNListeners() {
     });
     homeButtonLHN.addEventListener("mouseup", () => {
         homeButtonLHN.style.backgroundColor = getComputedStyle(root).getPropertyValue("--lhn-hover");
+        removeListPage();
+        addHomePage();
     });
 
     const listItemsLHN = document.querySelectorAll(".item-lhn-child");
@@ -52,6 +56,8 @@ export function initLHNListeners() {
         });
         list.addEventListener("mouseup", () => {
             list.style.backgroundColor = getComputedStyle(root).getPropertyValue("--lhn-hover");
+            removeHomePage();
+            addListPage(list.dataset.id);
         });
     });
 }
