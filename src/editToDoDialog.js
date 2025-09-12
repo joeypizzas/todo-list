@@ -3,6 +3,7 @@
 import { lists } from "./list.js";
 import { addHomePage, removeHomePage } from "./homeView.js";
 import { saveData } from "./storage.js";
+import { addListPage, removeListPage } from "./listView.js";
 
 const root = document.documentElement;
 const editToDoDialog = document.querySelector("#edit-todo-dialog");
@@ -104,12 +105,17 @@ editToDoSave.addEventListener("mouseup", () => {
             }
         }
     }
-
     toDoList.replaceChildren();
     saveData();
-    removeHomePage();
-    addHomePage();
     hideEditToDoDialog();
+    const mainContainer = document.querySelector(".main-container");
+    if (mainContainer.id === "main-home") {
+        removeHomePage();
+        addHomePage();
+    } else {
+        removeListPage();
+        addListPage(mainContainer.dataset.id);
+    }
 });
 
 editToDoFields.forEach(field => { // refactor into shared file for all dialogs
