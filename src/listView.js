@@ -6,6 +6,7 @@ import { ToDo } from "./todo.js";
 import { saveData } from "./storage.js";
 import { showEditToDoDialog } from "./editToDoDialog.js";
 import { initLHNListeners, addLHNLists, removeLHNLists } from "./lhnView.js";
+import { addHomePage } from "./homeView.js";
 
 export function addListPage(listIDToShow) {
     const main = document.querySelector("#main");
@@ -43,8 +44,6 @@ export function addListPage(listIDToShow) {
             } else {
                 gridListItem.appendChild(homeListHeader);
             }
-    
-            homeListHeader.appendChild(svg.createArrowSVG());
     
             for (const todo of list.toDos) {
                 const homeToDo = document.createElement("div");
@@ -246,8 +245,8 @@ export function addListPage(listIDToShow) {
                 showEditToDoDialog(id);
             }
             if (svg.classList.contains("trash-svg")) {
+                const gridListItem = editButton.closest(".grid-list-item");
                 if (editButton.classList.contains("delete-list-button")) {
-                    const gridListItem = editButton.closest(".grid-list-item");
                     const listToDelete = gridListItem.querySelector(".list-header");
                     for (const list of lists.getAllLists()) {
                         if (gridListItem.dataset.id === list.id) {
@@ -255,6 +254,8 @@ export function addListPage(listIDToShow) {
                             removeLHNLists();
                             addLHNLists();
                             initLHNListeners();
+                            removeListPage();
+                            addHomePage();
                         }
                     }
                 } else {
@@ -262,12 +263,12 @@ export function addListPage(listIDToShow) {
                         for (const todo of list.toDos) {
                             if (id === todo.id) {
                                 list.removeToDo(todo);
+                                removeListPage();
+                                addListPage(gridListItem.dataset.id);
                             }
                         }
                     }
                 }
-                removeHomePage();
-                addHomePage();
                 saveData();
             }
         });
