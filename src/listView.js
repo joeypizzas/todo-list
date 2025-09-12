@@ -14,6 +14,7 @@ export function addListPage(listIDToShow) {
     const mainList = document.createElement("div");
     mainList.id = "main-list";
     mainList.classList.add("main-container");
+    mainList.dataset.id = listIDToShow;
 
     const listsGrid = document.createElement("div");
     listsGrid.id = "home-lists-grid";
