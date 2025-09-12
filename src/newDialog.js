@@ -38,6 +38,7 @@ export function showNewDialog() {
         const toDoListOption = document.createElement("option");
         toDoListOption.value = list.name;
         toDoListOption.textContent = list.name;
+        toDoListOption.dataset.id = list.id;
         newToDoList.appendChild(toDoListOption);
     }
 
@@ -101,19 +102,29 @@ newSave.addEventListener("mouseup", () => {
                 list.addToDo(newToDo);
             }
         }
+        const mainContainer = document.querySelector(".main-container");
+        const newform = document.querySelector("#new-form");
+            const listOptions = newform.querySelectorAll("option");
+            listOptions.forEach(option => {
+                // Not done, fix logic from here to land you on list page only if you add todo from the currently showing list
+            });
+        if (mainContainer.id === "main-home") {
+            removeHomePage();
+            addHomePage();
+        } else {
+        }
     } else {
         const newList = new List(newToDoName.value);
         lists.addNewList(newList);
         removeLHNLists();
         addLHNLists();
         initLHNListeners();
+        removeHomePage();
+        addHomePage();
     }
-    
     newToDoList.replaceChildren();
     newForm.reset();
     saveData();
-    removeHomePage();
-    addHomePage();
     showToDoForm();
     hideNewDialog();
 });
