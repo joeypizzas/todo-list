@@ -45,7 +45,7 @@ fitness.addToDo(fitness3);
 
 addLHNLists();
 initLHNListeners();
-initProfileListeners();
+// initProfileListeners();
 initHeaderListeners();
 addHomePage();
 
