@@ -74,6 +74,7 @@ html, body {
     gap: .5rem;
     border-radius: 5px;
     padding: 0 .5rem 0 .5rem;
+    cursor: default;
 }
 
 #button-profile-edit, .button-todo-edit {

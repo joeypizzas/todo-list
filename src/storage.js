@@ -3,7 +3,6 @@
 import { lists } from "./list.js";
 import { ToDo } from "./todo.js";
 import { List } from "./list.js";
-import { profile } from "./profile.js";
 
 export function saveData() { // Saves lists, todos, and profile in local storage to support persistence
     const listData = lists.getAllLists().map(list => ({ // Recreates list and to-do data structure without methods for serialization
@@ -19,12 +18,7 @@ export function saveData() { // Saves lists, todos, and profile in local storage
         id: list.id
     }));
 
-    const profileData = {
-        name: profile.getName()
-    };
-
     localStorage.setItem("lists", JSON.stringify(listData));
-    localStorage.setItem("profile", JSON.stringify(profileData));
 }
 
 export function loadData() { // Loads lists, todos, and profile from local storage to support persistence
@@ -39,8 +33,4 @@ export function loadData() { // Loads lists, todos, and profile from local stora
         return list;
     });
     lists.setAllLists(rehydratedLists);
-
-    const savedProfileData = localStorage.getItem("profile");
-    const rawProfileData = JSON.parse(savedProfileData);
-    profile.editName(rawProfileData.name);
 }
