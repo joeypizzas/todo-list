@@ -1,5 +1,8 @@
 // List class
 
+import { loadData } from "./storage.js";
+import { ToDo } from "./todo.js";
+
 export class List { // Creates object to group todos
     constructor(name, id) {
         this.name = name;
@@ -68,3 +71,15 @@ export const lists = (function listManager() { // Array to organize lists and ma
         removeList
     }
 })();
+
+export function loadLists() { // Start with this function from here for adding in default list/todos
+    const exampleList = new List("Example list");
+    const exampleToDo = new ToDo("Add to-dos above!", "2025-09-14", "This is an example to-do.", "No", "Example list");
+    loadData();
+    const loadedLists = lists.getAllLists();
+    if (loadedLists.length === 0) {
+        lists.addNewList(exampleList);
+        exampleList.addToDo(exampleToDo);
+        console.log("test");
+    }
+}
