@@ -1,18 +1,14 @@
 // Main JS for todo list
 
 import "./style.css";
-import { ToDo } from "./todo.js";
-import { lists } from "./list.js";
-import { List } from "./list.js";
-import { profile } from "./profile.js";
+import { lists, loadLists } from "./list.js";
 import { saveData, loadData } from "./storage.js";
 import { addLHNLists, initLHNListeners, } from "./lhnView.js";
-import { initProfileListeners } from "./profileView.js";
 import { initHeaderListeners } from "./headerView.js";
 import { addHomePage } from "./homeView.js";
 import { addListPage } from "./listView.js";
 
-const personal = new List ("Personal");
+/* const personal = new List ("Personal");
 lists.addNewList(personal);
 
 const work = new List ("Work");
@@ -41,11 +37,12 @@ const fitness2 = new ToDo("Run 900 miles through August", "2025-08-01", "I want 
 const fitness3 = new ToDo("Run the NYC marathon", "2026-11-04", "I want to train for and run the NYC marathon next year", "No", lists.getAllLists().find(list => list.name === "Fitness").name);
 fitness.addToDo(fitness1);
 fitness.addToDo(fitness2);
-fitness.addToDo(fitness3);
+fitness.addToDo(fitness3); */
 
+
+loadLists();
 addLHNLists();
 initLHNListeners();
-// initProfileListeners();
 initHeaderListeners();
 addHomePage();
 
