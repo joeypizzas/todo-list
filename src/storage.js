@@ -23,7 +23,7 @@ export function saveData() { // Saves lists, todos, and profile in local storage
 
 export function loadData() { // Loads lists, todos, and profile from local storage to support persistence
     const savedListData = localStorage.getItem("lists");
-    const rawLists = JSON.parse(savedListData);
+    const rawLists = savedListData ? JSON.parse(savedListData) : [];
     const rehydratedLists = rawLists.map(eachList => { // Rehydrates lists and to-dos to make them class instances and re-add methods
         const list = new List(eachList.name, eachList.id);
         eachList.toDos.forEach(eachToDo => {
