@@ -72,7 +72,7 @@ export const lists = (function listManager() { // Array to organize lists and ma
     }
 })();
 
-export function loadLists() { // Start with this function from here for adding in default list/todos
+export function loadLists() {
     const exampleList = new List("Example list");
     const exampleToDo = new ToDo("Add to-dos above!", "2025-09-14", "This is an example to-do.", "No", "Example list");
     loadData();
@@ -80,6 +80,5 @@ export function loadLists() { // Start with this function from here for adding i
     if (loadedLists.length === 0) {
         lists.addNewList(exampleList);
         exampleList.addToDo(exampleToDo);
-        console.log("test");
     }
 }

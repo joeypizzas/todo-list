@@ -25,7 +25,6 @@ export function addHomePage() {
     listsGrid.classList.add("lists-grid");
     mainHome.appendChild(listsGrid);
 
-    console.log("All lists:", lists.getAllLists());
     for (const list of lists.getAllLists()) {
         const gridListItem = document.createElement("div");
         gridListItem.classList.add("grid-list-item");
