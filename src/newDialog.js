@@ -28,7 +28,7 @@ const newDueLabelAndField = document.querySelector("#new-due-label-and-field");
 const newListLabelAndField = document.querySelector("#new-list-label-and-field");
 const newForm = document.querySelector("#new-form");
 
-export function showNewDialog() {
+export function showNewDialog() { // Enables adding new todo or list
     newDialog.showModal();
     lhn.classList.add("blur");
     header.classList.add("blur");
@@ -46,7 +46,7 @@ export function showNewDialog() {
     todoRadio.checked = true;
 }
 
-function hideNewDialog() {
+function hideNewDialog() { // Hides dialog after creating new todo or list, or exiting
     newDialog.close();
     lhn.classList.remove("blur");
     header.classList.remove("blur");
@@ -54,13 +54,13 @@ function hideNewDialog() {
     footer.classList.remove("blur");
 }
 
-function showListForm() {
+function showListForm() { // Hides extraneous fields for adding new list
     newDescriptionLabelAndField.classList.add("hidden");
     newDueLabelAndField.classList.add("hidden");
     newListLabelAndField.classList.add("hidden");
 }
 
-function showToDoForm() {
+function showToDoForm() { // Shows all form fields for adding new todo 
     newDescriptionLabelAndField.classList.remove("hidden");
     newDueLabelAndField.classList.remove("hidden");
     newListLabelAndField.classList.remove("hidden");
@@ -75,7 +75,7 @@ closeNewModalButton.addEventListener("mouseout", () => {
 closeNewModalButton.addEventListener("mousedown", () => {
     closeNewModalButton.style.color = getComputedStyle(root).getPropertyValue("--header-click");
 });
-closeNewModalButton.addEventListener("mouseup", () => {
+closeNewModalButton.addEventListener("mouseup", () => { // Closes new dialog and preps it for reopen
     closeNewModalButton.style.color = getComputedStyle(root).getPropertyValue("--header-hover");
     newToDoList.replaceChildren();
     showToDoForm();
@@ -95,7 +95,7 @@ newSave.addEventListener("mousedown", () => {
 newSave.addEventListener("mouseup", () => {
     newSave.style.backgroundColor = getComputedStyle(root).getPropertyValue("--header-hover");
 
-    const checkedRadioButton = radioButtons.querySelector("input[name='todo-or-list']:checked");
+    const checkedRadioButton = radioButtons.querySelector("input[name='todo-or-list']:checked"); // Handles new submission based on whether todo or list
     if (checkedRadioButton.value === "To-Do") {
         const newToDo = new ToDo(newToDoName.value, newToDoDue.value, newToDoDescription.value, "No", newToDoList.value);
         for (const list of lists.getAllLists()) {
@@ -108,7 +108,7 @@ newSave.addEventListener("mouseup", () => {
         if (mainContainer.id === "main-home") {
             removeHomePage();
             addHomePage();
-        } else {
+        } else { // Lands you on current list in the UI if you add a todo there, else on the home page
             if (selectedOption.dataset.id === mainContainer.dataset.id) {
                 removeListPage();
                 addListPage(selectedOption.dataset.id);
@@ -117,7 +117,7 @@ newSave.addEventListener("mouseup", () => {
                 addHomePage();
             }
         }
-    } else if (checkedRadioButton.value === "List") {
+    } else if (checkedRadioButton.value === "List") { // You always land back on home page if you add a new list
         const newList = new List(newToDoName.value);
         lists.addNewList(newList);
         removeLHNLists();
@@ -126,7 +126,7 @@ newSave.addEventListener("mouseup", () => {
         removeHomePage();
         addHomePage();
     }
-    newToDoList.replaceChildren();
+    newToDoList.replaceChildren(); // Preps dialog for next reopen
     newForm.reset();
     saveData();
     showToDoForm();

@@ -1,6 +1,6 @@
 // JS for SVG utility functions
 
-export const svg = (function svgUtils() {
+export const svg = (function svgUtils() { // Factory that creates SVGs to use in dynamically generated UI
     const svgNS = "http://www.w3.org/2000/svg";
 
     function createArrowSVG() {

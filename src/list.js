@@ -72,7 +72,7 @@ export const lists = (function listManager() { // Array to organize lists and ma
     }
 })();
 
-export function loadLists() {
+export function loadLists() { // Shows user what todo and list look like if none are stored yet 
     const exampleList = new List("Example list");
     const exampleToDo = new ToDo("Add to-dos above!", "2025-09-14", "This is an example to-do.", "No", "Example list");
     loadData();

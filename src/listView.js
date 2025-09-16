@@ -2,13 +2,12 @@
 
 import { lists } from "./list.js";
 import { svg } from "./svgUtils.js";
-import { ToDo } from "./todo.js";
 import { saveData } from "./storage.js";
 import { showEditToDoDialog } from "./editToDoDialog.js";
 import { initLHNListeners, addLHNLists, removeLHNLists } from "./lhnView.js";
 import { addHomePage } from "./homeView.js";
 
-export function addListPage(listIDToShow) {
+export function addListPage(listIDToShow) { // Adds list page to UI based on passed parameter
     const main = document.querySelector("#main");
 
     const mainList = document.createElement("div");
@@ -76,12 +75,12 @@ export function addListPage(listIDToShow) {
                 buttonToDoEdit.classList.add("button-todo-edit");
                 buttonToDoEdit.classList.add("button-edit");
     
-                const storedDate = todo.dueDate;
+                const storedDate = todo.dueDate; // Better UX to always show date in local format
                 const [year, month, day] = storedDate.split("-");
                 const dateObject = new Date(year, month - 1, day);
                 const localDate = dateObject.toLocaleDateString();
     
-                if (todo.isComplete === "No") {
+                if (todo.isComplete === "No") { // Todo can only be edited if not complete
                     toDoName.textContent = todo.name;
                     homeToDoCheckName.appendChild(toDoName);
     
@@ -90,7 +89,7 @@ export function addListPage(listIDToShow) {
     
                     buttonToDoEdit.appendChild(svg.createPencilSVG());
     
-                } else {
+                } else { // Todo can only be deleted if complete
                     homeToDoCheckbox.classList.add("checked");
                     
                     const struckName = document.createElement("s");
@@ -144,7 +143,7 @@ export function addListPage(listIDToShow) {
                 checkbox.style.borderColor = getComputedStyle(root).getPropertyValue("--header-click");
             }
         });
-        checkbox.addEventListener("mouseup", () => {
+        checkbox.addEventListener("mouseup", () => { // Marks todo as complete when checked and incomplete when unchecked
             if (!checkbox.classList.contains("checked")) {
                 checkbox.classList.add("checked");
                 checkbox.style.backgroundColor = getComputedStyle(root).getPropertyValue("--header-hover");
@@ -235,7 +234,7 @@ export function addListPage(listIDToShow) {
             const svg = editButton.querySelector(".pencil-svg, .trash-svg")
             const homeToDo = editButton.closest(".todo");
             let id;
-            if (homeToDo) {
+            if (homeToDo) { // Todo ID enables opening edit dialog
                 id = homeToDo.dataset.id;
             }
 
@@ -247,7 +246,7 @@ export function addListPage(listIDToShow) {
             }
             if (svg.classList.contains("trash-svg")) {
                 const gridListItem = editButton.closest(".grid-list-item");
-                if (editButton.classList.contains("delete-list-button")) {
+                if (editButton.classList.contains("delete-list-button")) { // Confirms list is empty to allow deleting it 
                     const listToDelete = gridListItem.querySelector(".list-header");
                     for (const list of lists.getAllLists()) {
                         if (gridListItem.dataset.id === list.id) {
@@ -259,7 +258,7 @@ export function addListPage(listIDToShow) {
                             addHomePage();
                         }
                     }
-                } else {
+                } else { // Remove todo and re-add list without it 
                     for (const list of lists.getAllLists()) {
                         for (const todo of list.toDos) {
                             if (id === todo.id) {

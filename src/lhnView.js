@@ -6,7 +6,7 @@ import { addListPage, removeListPage } from "./listView.js";
 
 const listsContainer = document.querySelector("#lists-container");
 
-export function addLHNLists() {
+export function addLHNLists() { // Enables viewing home and lists from LHN
     for (const list of lists.getAllLists()) {
         const listLHN = document.createElement("button");
         listLHN.classList.add("item-lhn");
@@ -24,7 +24,7 @@ export function removeLHNLists() {
     });
 }
 
-export function initLHNListeners() {
+export function initLHNListeners() { // Access home and lists from LHN
     const root = document.documentElement;
     
     const homeButtonLHN = document.querySelector("#home-button-lhn");

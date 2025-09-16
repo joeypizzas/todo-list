@@ -20,7 +20,7 @@ const closeModalButton = document.querySelector("#close-edit-modal-button");
 const editToDoSave = document.querySelector("#edit-todo-save");
 const editToDoFields = document.querySelectorAll(".edit-todo-field");
 
-export function showEditToDoDialog(clickedToDoId) {
+export function showEditToDoDialog(clickedToDoId) { // Shows specific todo to edit
     editToDoDialog.showModal();
     lhn.classList.add("blur");
     header.classList.add("blur");
@@ -45,7 +45,7 @@ export function showEditToDoDialog(clickedToDoId) {
     }
 }
 
-export function hideEditToDoDialog() {
+export function hideEditToDoDialog() { // Hides dialog after saving todo or exiting
     editToDoDialog.close();
     lhn.classList.remove("blur");
     header.classList.remove("blur");
@@ -62,7 +62,7 @@ closeModalButton.addEventListener("mouseout", () => {
 closeModalButton.addEventListener("mousedown", () => {
     closeModalButton.style.color = getComputedStyle(root).getPropertyValue("--header-click");
 });
-closeModalButton.addEventListener("mouseup", () => {
+closeModalButton.addEventListener("mouseup", () => { // Closes dialog after exiting and preps it for reopen
     closeModalButton.style.color = getComputedStyle(root).getPropertyValue("--header-hover");
     toDoList.replaceChildren();
     hideEditToDoDialog();
@@ -80,7 +80,7 @@ editToDoSave.addEventListener("mousedown", () => {
 editToDoSave.addEventListener("mouseup", () => {
     editToDoSave.style.backgroundColor = getComputedStyle(root).getPropertyValue("--header-hover");
 
-    for (const list of lists.getAllLists()) {
+    for (const list of lists.getAllLists()) { // Saves updated todo info and replaces in UI
         for (const todo of list.toDos) {
             if (todo.id === editToDoForm.dataset.id) {
                 if (todo.name !== toDoName.value) {
@@ -109,7 +109,7 @@ editToDoSave.addEventListener("mouseup", () => {
     saveData();
     hideEditToDoDialog();
     const mainContainer = document.querySelector(".main-container");
-    if (mainContainer.id === "main-home") {
+    if (mainContainer.id === "main-home") { // You always land where you came from, either home or list page
         removeHomePage();
         addHomePage();
     } else {
@@ -118,7 +118,7 @@ editToDoSave.addEventListener("mouseup", () => {
     }
 });
 
-editToDoFields.forEach(field => { // refactor into shared file for all dialogs
+editToDoFields.forEach(field => {
     field.addEventListener("mouseover", () => {
         field.style.backgroundColor = getComputedStyle(root).getPropertyValue("--lhn-hover");
         field.style.borderColor = getComputedStyle(root).getPropertyValue("--header-hover");
